@@ -14,6 +14,10 @@
     "allowJs": true,
     // moduleResolution определяет импорты node/classic, почти всегда юзается node
     "moduleResolution": "node",
+
+    // "baseUrl": ".",
+    // Автоматическая настройка для путей для абсолютных импортов
+
     //"esModuleInterop" позволяет там где require в пактеах
     // поддерживать import export, = common js
     "esModuleInterop": true,
