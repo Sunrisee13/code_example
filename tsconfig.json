@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    // Куда собираем (нам не важно, тк у нас сборка вебпаком)
+    "outDir": "./dist/",
+    // noImplicitAny Подсвечивает места, где не указан тип (неявное any)
+    "noImplicitAny": true,
+    // Способы модульной сборки (импорты)
+    // самые частые ESNexs, es6, commonJS https://www.typescriptlang.org/tsconfig#module
+    "module": "ESNext",
+    // "target": "es5" В какую спецификацию компилируем
+    "target": "es5",
+    // "jsx": "react",- позволяет обрабатывать react
+    "jsx": "react",
+    "allowJs": true,
+    // moduleResolution определяет импорты node/classic, почти всегда юзается node
+    "moduleResolution": "node",
+    //"esModuleInterop" позволяет там где require в пактеах
+    // поддерживать import export, = common js
+    "esModuleInterop": true,
+    // esModuleInterop позволяет импортировать библиотеки без * as
+    // Если какая-то библиотека не имеет export default
+    "allowSyntheticDefaultImports": true
+  },
+  // Данная настройка нужна, чтобы при "module": "ESNext",
+  // поддерживались вебпаком импорты и экспорты
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}
