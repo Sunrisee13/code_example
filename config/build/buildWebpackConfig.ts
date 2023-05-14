@@ -28,7 +28,7 @@ export function buildWebpackConfig(
 
     module: {
       // Тут все loader`ы , для работы с нестандартными расширениями
-      rules: buildLoaders(),
+      rules: buildLoaders(options),
     },
 
     resolve: buildResolvers(),

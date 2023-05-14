@@ -23,7 +23,13 @@
     "esModuleInterop": true,
     // esModuleInterop позволяет импортировать библиотеки без * as
     // Если какая-то библиотека не имеет export default
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "plugins": [
+      // Плагин для автокомплита модульных стилей
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ]
   },
   // Данная настройка нужна, чтобы при "module": "ESNext",
   // поддерживались вебпаком импорты и экспорты

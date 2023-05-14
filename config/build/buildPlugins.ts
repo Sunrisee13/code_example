@@ -1,6 +1,7 @@
-import HtmlWebpackPlugin from "html-webpack-plugin";;
+import HtmlWebpackPlugin from "html-webpack-plugin";
 import webpack from "webpack";
 import { BuildOptions } from "./types/config";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 export function buildPlugins({
   paths,
@@ -10,5 +11,12 @@ export function buildPlugins({
       template: paths.html, // https://github.com/jantimon/html-webpack-plugin#options путь шаблона
     }),
     new webpack.ProgressPlugin(), // чтобы видеть процесс загрузки. Идёт из коробки
+    // Плагин, для создания css файлов, тк css читается быстрее чем js
+    // https://webpack.js.org/plugins/mini-css-extract-plugin/ + нет разницы в порядке плагинов вроде как
+    new MiniCssExtractPlugin({
+      filename: "css/[name].[contenthash:8].css",
+      chunkFilename: "css/[name].[contenthash:8].css", // понадобится позже, при разбиении файлов
+      // на чанки и асинхронной подгрузки
+    }),
   ];
 }
