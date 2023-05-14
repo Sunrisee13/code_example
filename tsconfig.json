@@ -10,7 +10,7 @@
     // "target": "es5" В какую спецификацию компилируем
     "target": "es5",
     // "jsx": "react",- позволяет обрабатывать react
-    "jsx": "react",
+    "jsx": "react-jsx",
     "allowJs": true,
     // moduleResolution определяет импорты node/classic, почти всегда юзается node
     "moduleResolution": "node",
