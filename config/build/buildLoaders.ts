@@ -12,6 +12,20 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     exclude: /node_modules/,
   };
 
+  const svgLoader = {
+    test: /\.svg$/,
+    use: ["@svgr/webpack"],
+  };
+
+  const fileLoader = {
+    test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+    use: [
+      {
+        loader: "file-loader",
+      },
+    ],
+  };
+
   // для этого надо ещё миллион всего установить npm i -D sass-loader@12.6.0 sass@1.49.9 style-loader@3.3.1 css-loader@6.6.0
   const cssLoader = {
     test: /\.s[ac]ss$/i,
@@ -38,5 +52,5 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     ],
   };
 
-  return [typeScriptLoader, cssLoader];
+  return [svgLoader, fileLoader, typeScriptLoader, cssLoader];
 }

@@ -12,12 +12,22 @@ declare module "*.scss" {
 // Для автокомплита
 // ✅ В VSC в рабочей области клавиша F1 > TypeScript select TypeScript version > use workspace version.
 // Если при нажатии F1 не находиш TypeScript, то в настройках VSC > TypeScript > ставим галочку: TypeScript: Enable Prompt Use Workspace Tsdk
-// 
+//
 // ✅ Ставим плагин: npm i -D typescript-plugin-css-modules
-// 
+//
 // ✅ Добавляем в файл tsconfig.json
 // "plugins": [
 // {
 // "name": "typescript-plugin-css-modules"
 // }
-// ] 
+// ]
+
+declare module "*.png";
+declare module "*.jpg";
+declare module "*.jpeg";
+
+declare module "*.svg" {
+  import React from "react";
+  const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
+  export default SVG;
+}
