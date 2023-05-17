@@ -1,15 +1,14 @@
-import path from "path";
-import { BuildOptions } from "./types/config";
-import webpack from "webpack";
-import { buildPlugins } from "./buildPlugins";
-import { buildLoaders } from "./buildLoaders";
-import { buildResolvers } from "./buildResolvers";
-import { buildDevServer } from "./buildDevServer";
+import { type BuildOptions } from './types/config'
+import type webpack from 'webpack'
+import { buildPlugins } from './buildPlugins'
+import { buildLoaders } from './buildLoaders'
+import { buildResolvers } from './buildResolvers'
+import { buildDevServer } from './buildDevServer'
 
-export function buildWebpackConfig(
+export function buildWebpackConfig (
   options: BuildOptions
 ): webpack.Configuration {
-  const { paths, mode, isDev } = options;
+  const { paths, mode, isDev } = options
 
   return {
     mode, // development / production(max сжатие)
@@ -17,24 +16,24 @@ export function buildWebpackConfig(
     entry: paths.entry, // Откуда забираем файл
 
     output: {
-      filename: "[name].[contenthash].js", // https://webpack.js.org/configuration/output/#template-strings
+      filename: '[name].[contenthash].js', // https://webpack.js.org/configuration/output/#template-strings
       // [name] - entry можно сделать объектом с нескольктими путями, это - имя
       // [contenthash] - в зависимости от контента хэш
       path: paths.build, // Куда кладём файл
-      clean: true, // Чистим лишние файлы в бандле (предыдущие)
+      clean: true // Чистим лишние файлы в бандле (предыдущие)
     },
 
     plugins: buildPlugins(options),
 
     module: {
       // Тут все loader`ы , для работы с нестандартными расширениями
-      rules: buildLoaders(options),
+      rules: buildLoaders(options)
     },
 
     resolve: buildResolvers(options),
-    devtool: isDev ? "inline-source-map" : undefined, // Вроде как нужны на этапе разработки, для отлова ошибок
+    devtool: isDev ? 'inline-source-map' : undefined, // Вроде как нужны на этапе разработки, для отлова ошибок
     // Благодаря им можно в браузере отлаживать код, тк браузер разложит всё по файлам для разработки
     // https://www.youtube.com/watch?v=v9gtHkynU5E
-    devServer: isDev ? buildDevServer(options) : undefined,
-  };
+    devServer: isDev ? buildDevServer(options) : undefined
+  }
 }
