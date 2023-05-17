@@ -14,11 +14,12 @@
     "allowJs": true,
     // moduleResolution определяет импорты node/classic, почти всегда юзается node
     "moduleResolution": "node",
-
     "baseUrl": ".",
     // Автоматическая настройка для путей для абсолютных импортов
     "paths": {
-      "*": ["./src/*"] // все абсолютные импорты будут идти из папки src
+      "*": [
+        "./src/*"
+      ] // все абсолютные импорты будут идти из папки src
     },
     //"esModuleInterop" позволяет там где require в пактеах
     // поддерживать import export, = common js
