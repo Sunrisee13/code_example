@@ -1,7 +1,8 @@
 {
   "presets": [
     "@babel/preset-env",
-    "@babel/preset-typescript"
+    "@babel/preset-typescript",
+    ["@babel/preset-react", {"runtime": "automatic"}]
   ], // Преобразование кода в зависимости от окружения
   //   https://www.i18next.com/overview/plugins-and-utils
   // Плагин для i18next https://github.com/gilbsgilbs/babel-plugin-i18next-extract

@@ -5,7 +5,14 @@ module.exports = {
     // jest: true
   },
   extends: ['plugin:react/recommended', 'standard-with-typescript', 'plugin:i18next/recommended'],
-  overrides: [],
+  overrides: [
+    {
+      files: ['**/src/**/*.test.{ts,tsx}'],
+      rules: {
+        'i18next/no-literal-string': 0
+      }
+    }
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',

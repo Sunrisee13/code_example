@@ -3,6 +3,8 @@
  * https://jestjs.io/docs/configuration
  */
 
+import path from 'path'
+
 export default {
   clearMocks: true,
   coveragePathIgnorePatterns: [
@@ -24,7 +26,14 @@ export default {
     '**/__tests__/**/*.[jt]s?(x)',
     '**/?(*.)+(spec|test).[tj]s?(x)'
   ],
-  testEnvironment: 'jsdom'
+  modulePaths: ['<rootDir>src'], // настроили абсолютные импорты
+  testEnvironment: 'jsdom',
+  // Чисто всё по доке jest настраивается https://jestjs.io/docs/webpack
+  setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
+  moduleNameMapper: {
+    '\\.s?css$': 'identity-obj-proxy',
+    '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx') // Сделали пустой компонент, который будет залетать вместо иконки
+  }
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
