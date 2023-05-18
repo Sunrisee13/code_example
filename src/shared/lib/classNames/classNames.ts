@@ -9,5 +9,6 @@ export function classNames (
   for (const key in mods) {
     if (mods[key]) result.push(key)
   }
+
   return result.join(' ')
 }
