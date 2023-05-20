@@ -16,17 +16,12 @@ jobs:
         node-version: [ 17.x ]
     steps:
       - uses: actions/checkout@v2
-      - name: Staring Node.js ${{ matrix.node-version }}
+      - name: Starting Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install modules
+      - name: Install modules
         run: npm install --force
-      - name: Save installed modules
-        run: |
-          mkdir -p installed_modules
-          cp -R node_modules installed_modules/
-          echo "::set-output name=module-path::installed_modules"
 
   linting:
     runs-on: ubuntu-latest
@@ -37,13 +32,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Restore installed modules
-        uses: actions/download-artifact@v2
-        with:
-          name: installed-modules
-      - name: linting typescript
-        run: npm run lint:ts
-        if: always()
+      - name: Run linting
+        run: npm run lint
 
   unit-testing:
     runs-on: ubuntu-latest
@@ -54,12 +44,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Restore installed modules
-        uses: actions/download-artifact@v2
-        with:
-          name: installed-modules
-      - name: unit testing
-        run: npm run test:unit
+      - name: Run unit tests
+        run: npm run test
 
   regression-testing:
     runs-on: ubuntu-latest
@@ -70,12 +56,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Restore installed modules
-        uses: actions/download-artifact@v2
-        with:
-          name: installed-modules
-      - name: screenshot testing + storybook
-        run: npm run test:ui:ci
+      - name: Run regression tests
+        run: npm run regression-test
 
   build:
     runs-on: ubuntu-latest
@@ -86,19 +68,5 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Restore installed modules
-        uses: actions/download-artifact@v2
-        with:
-          name: installed-modules
-      - name: build production project
-        run: npm run build:prod
-
-  artifacts:
-    runs-on: ubuntu-latest
-    needs: [linting, unit-testing, regression-testing, build]
-    steps:
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: installed-modules
-          path: ${{ needs.installation.outputs.module-path }}
+      - name: Run build
+        run: npm run build
