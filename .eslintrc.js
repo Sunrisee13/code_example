@@ -18,7 +18,7 @@ module.exports = {
     sourceType: 'module',
     project: 'tsconfig.json'
   },
-  plugins: ['react', '@typescript-eslint', 'i18next'],
+  plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
   rules: {
     'react/react-in-jsx-scope': 0,
     '@typescript-eslint/strict-boolean-expressions': 0,
@@ -28,6 +28,8 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 0, // нам нужно это для искусственных задержек
     '@typescript-eslint/no-floating-promises': 0,
     '@typescript-eslint/no-unused-vars': 1,
-    'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['to', 'data-testid'] }]
+    'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['to', 'data-testid'] }],
+    'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+    'react-hooks/exhaustive-deps': 'error' // Checks effect dependencies
   }
 }

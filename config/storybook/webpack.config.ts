@@ -4,6 +4,9 @@ import path from 'path'
 import { buildCssLoader } from '../build/loaders/buildCssLoader'
 import { type RuleSetRule } from 'webpack'
 
+// По дефолту сторибук имеет свою конфигурацию вебпака и мы можем её переопределять
+// Большинство написанного здесь - подсказки со стак оферфлоу или доки, лучше пересмотреть видос
+// если будет желание врубиться. + есть несколько вариантов решения, таких проблем
 export default ({ config }: { config: webpack.Configuration }) => {
   const paths: BuildPaths = {
     build: '',

@@ -7,7 +7,8 @@ import { MemoryRouter } from 'react-router-dom'
 export interface ComponentRenderOptions {
   route?: string
 }
-
+// Какая-то дефолтная история по идее, для рендера компонентов с роутингом. + мы сразу же сюда дописали
+// i18n, чтобы не использовать по нескольку раз другие функции
 export function componentRender (component: ReactNode, options: ComponentRenderOptions = {}) {
   const {
     route = '/'
