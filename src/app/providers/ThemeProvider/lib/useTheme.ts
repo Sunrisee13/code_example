@@ -16,6 +16,7 @@ export function useTheme (): UseThemeResult {
   const toggleTheme = () => {
     const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK
     setTheme(newTheme)
+    document.body.className = newTheme // Надо почекать, где конфликты могут возникать из-за этого и убрать лишние куски кода
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme)
   }
 
