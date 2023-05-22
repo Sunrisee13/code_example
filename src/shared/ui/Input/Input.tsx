@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState, type InputHTMLAttributes } from 'react'
+import React, { memo, useEffect, useRef, type InputHTMLAttributes } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Input.module.scss'
 
@@ -12,17 +12,13 @@ interface InputProps extends HTMLInputProps {
 }
 
 export const Input = memo(({ className, value, onChange, placeholder, type = 'text', autofocus, ...otherProps }: InputProps) => {
-  const [isFocused, setIsFocused] = useState(false)
   const ref = useRef<HTMLInputElement>()
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(e.target.value)
   }
 
   useEffect(() => {
-    if (autofocus) {
-      setIsFocused(true)
-      ref.current?.focus()
-    }
+    if (autofocus) ref.current?.focus()
   }, [autofocus])
 
   return (
