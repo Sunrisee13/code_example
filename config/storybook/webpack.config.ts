@@ -2,7 +2,7 @@ import { type BuildPaths } from '../build/types/config'
 import type webpack from 'webpack'
 import path from 'path'
 import { buildCssLoader } from '../build/loaders/buildCssLoader'
-import { type RuleSetRule } from 'webpack'
+import { DefinePlugin, type RuleSetRule } from 'webpack'
 
 // По дефолту сторибук имеет свою конфигурацию вебпака и мы можем её переопределять
 // Большинство написанного здесь - подсказки со стак оферфлоу или доки, лучше пересмотреть видос
@@ -32,5 +32,13 @@ export default ({ config }: { config: webpack.Configuration }) => {
   })
 
   config.module.rules.push(buildCssLoader(true))
+  config.resolve.modules = [
+    path.resolve(__dirname, '../../src'),
+    'node_modules'
+  ]
+
+  config.plugins.push(new DefinePlugin({
+    __IS_DEV__: true
+  }))
   return config
 }
