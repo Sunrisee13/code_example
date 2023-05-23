@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Theme } from 'app/providers/ThemeProvider'
+import StoreDecorator from 'shared/config/storybook/StoreDecorator/StoreDecorator'
 import ThemeDecorator from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Navbar } from './Navbar'
 
@@ -18,11 +19,16 @@ type Story = StoryObj<typeof Navbar>
 
 export const Light: Story = {
   args: {
-  }
+  },
+  decorators: [StoreDecorator({
+
+  })]
 }
 
 export const Dark: Story = {
   args: {
   },
-  decorators: [ThemeDecorator(Theme.DARK)]
+  decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({
+
+  })]
 }
