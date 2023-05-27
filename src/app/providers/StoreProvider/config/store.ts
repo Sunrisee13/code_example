@@ -1,24 +1,26 @@
 import { configureStore, type ReducersMapObject } from '@reduxjs/toolkit'
 import { counterReducer } from 'entities/Counter'
 import { userReducer } from 'entities/User'
-import { loginReducer } from 'feature/AuthByUsername'
+import { createReducerManager } from './reducerManager'
 import { type StateSchema } from './StateSchema'
 // Мы переписали на функцию, чтобы использовать данную конфигурацию и в других местах
 // <store, action, middleware>
-export function createReduxStore (initialState?: StateSchema) {
+export function createReduxStore (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
   const rootReducers: ReducersMapObject<StateSchema> = {
+    ...asyncReducers,
     counter: counterReducer,
-    user: userReducer,
-    loginForm: loginReducer
+    user: userReducer
   }
-  return configureStore<StateSchema>({
-    reducer: rootReducers,
+
+  const reducerManager = createReducerManager(rootReducers)
+
+  const store = configureStore<StateSchema>({
+    // Для сплитинга мы заменили rootReducers на вот это
+    reducer: reducerManager.reduce,
     devTools: __IS_DEV__, // boolean флаг для devtools
     preloadedState: initialState // Состояние загружаемое изначально, для сторибука потом пригодится
   })
+  // @ts-expect-error
+  store.reducerManager = reducerManager
+  return store
 }
-
-// // Infer the `RootState` and `AppDispatch` types from the store itself
-// export type RootState = ReturnType<typeof store.getState>
-// // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-// export type AppDispatch = typeof store.dispatch
