@@ -1,6 +1,9 @@
 {
   "": "",
   "ProfilePage": "ProfilePage",
+  "Ваш": "Ваш",
+  "Ваша фамилия": "Ваша фамилия",
+  "Ваше имя": "Ваше имя",
   "Войти": "Sign in",
   "Вы ввели неверный логин или пароль": "You entered an incorrect login or password",
   "Выйти": "Log out",
@@ -19,6 +22,7 @@
   "Переключить": "Toggle",
   "Произошла непредвиденная ошибка": "An unexpected error has occurred",
   "Профиль": "Profile",
+  "Редактировать": "Редактировать",
   "Страница не найдена": "Page not found",
   "Текст": "Text",
   "Форма авторизации": "Sign in form",
