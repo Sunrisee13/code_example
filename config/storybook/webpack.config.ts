@@ -38,7 +38,8 @@ export default ({ config }: { config: webpack.Configuration }) => {
   ]
 
   config.plugins.push(new DefinePlugin({
-    __IS_DEV__: true
+    __IS_DEV__: true,
+    __API__: JSON.stringify('') // Нам не надо ни в какую api передавать запросы
   }))
   return config
 }

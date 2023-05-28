@@ -5,6 +5,10 @@ module.exports = {
     // jest: true
   },
   extends: ['plugin:react/recommended', 'standard-with-typescript', 'plugin:i18next/recommended'],
+  globals: {
+    __IS_DEV__: true,
+    __API__: true
+  },
   overrides: [
     {
       files: ['**/src/**/*.test.{ts,tsx}'],

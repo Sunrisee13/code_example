@@ -1,12 +1,13 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import webpack from 'webpack'
-import { type BuildOptions } from './types/config'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import { type BuildOptions } from './types/config'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
 export function buildPlugins ({
   paths,
-  isDev
+  isDev,
+  apiURL
 }: BuildOptions): webpack.WebpackPluginInstance[] {
   const plugins = [new HtmlWebpackPlugin({
     template: paths.html // https://github.com/jantimon/html-webpack-plugin#options путь шаблона
@@ -20,7 +21,8 @@ export function buildPlugins ({
     // на чанки и асинхронной подгрузки
   }),
   new webpack.DefinePlugin({
-    __IS_DEV__: JSON.stringify(isDev)
+    __IS_DEV__: JSON.stringify(isDev),
+    __API__: JSON.stringify(apiURL)
   })]
 
   if (isDev) {
