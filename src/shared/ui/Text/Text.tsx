@@ -3,7 +3,7 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Text.module.scss'
 
 export enum TextTheme {
-  // PRIMARY = 'primary',
+  PRIMARY = 'primary',
   ERROR = 'error'
 }
 
@@ -14,9 +14,9 @@ interface TextProps {
   theme?: TextTheme
 }
 
-export const Text = memo(({ className, title, text, theme }: TextProps) => {
+export const Text = memo(({ className, title, text, theme = TextTheme.PRIMARY }: TextProps) => {
   return (
-  <div className={classNames('', { }, [className, cls[theme]])}>
+  <div className={classNames('', {}, [className, cls[theme]])}>
     {title && <p className={cls.title}>{title}</p>}
     {text && <p className={cls.text}>{text}</p>}
   </div>

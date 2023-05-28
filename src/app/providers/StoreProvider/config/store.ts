@@ -1,4 +1,4 @@
-import { configureStore, type ReducersMapObject } from '@reduxjs/toolkit'
+import { type CombinedState, configureStore, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit'
 import { counterReducer } from 'entities/Counter'
 import { userReducer } from 'entities/User'
 import { $api } from 'shared/api/api'
@@ -13,19 +13,21 @@ export function createReduxStore (initialState?: StateSchema, asyncReducers?: Re
     user: userReducer
   }
 
+  const extraArg: ThunkExtraArg = {
+    api: $api,
+    navigate
+  }
+
   const reducerManager = createReducerManager(rootReducers)
   // <StateSchema>
   const store = configureStore({
     // Для сплитинга мы заменили rootReducers на вот это
-    reducer: reducerManager.reduce,
+    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>, // Без этого мидлварины нормально не типизируются
     devTools: __IS_DEV__, // boolean флаг для devtools
     preloadedState: initialState, // Состояние загружаемое изначально, для сторибука потом пригодится
     middleware: getDefaultMiddleware => getDefaultMiddleware({
       thunk: {
-        extraArgument: {
-          api: $api,
-          navigate
-        }
+        extraArgument: extraArg
       }
     })
   })

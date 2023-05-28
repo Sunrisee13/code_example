@@ -1,11 +1,10 @@
-import axios from 'axios'
 import { userActions } from 'entities/User'
 import { loginByUsername } from './loginByUsername'
 import { TestAsynkThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
 
-jest.mock('axios') // Убрать нельзя, тк ниже мы уже обрабатываем мокнутую библиотеку(как я понял)
+// jest.mock('axios') // Убрать нельзя, тк ниже мы уже обрабатываем мокнутую библиотеку(как я понял)
 
-const mockedAxios = jest.mocked(axios, true) // Модуль, который мы мокаем, мокаем ли мы внутренние поля
+// const mockedAxios = jest.mocked(axios, true) // Модуль, который мы мокаем, мокаем ли мы внутренние поля
 
 describe('loginByUsername.test', () => {
   // let dispatch: Dispatch
@@ -46,25 +45,25 @@ describe('loginByUsername.test', () => {
 
   test('success login', async () => {
     const userValue = { username: 'Sasha', id: '12' }
-    mockedAxios.post.mockReturnValue(Promise.resolve({ data: userValue }))
 
     const thunk = new TestAsynkThunk(loginByUsername)
+    thunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }))
     const result = await thunk.callThunk({ username: '123', password: '134' })
 
     expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userValue))
     expect(thunk.dispatch).toHaveBeenCalledTimes(3)
-    expect(mockedAxios.post).toHaveBeenCalled()
+    expect(thunk.api.post).toHaveBeenCalled()
     expect(result.meta.requestStatus).toBe('fulfilled')
     expect(result.payload).toEqual(userValue)
   })
 
   test('error login', async () => {
-    mockedAxios.post.mockReturnValue(Promise.resolve({ status: 403 }))
     const thunk = new TestAsynkThunk(loginByUsername)
+    thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }))
     const result = await thunk.callThunk({ username: '123', password: '134' })
 
     expect(thunk.dispatch).toHaveBeenCalledTimes(2)
-    expect(mockedAxios.post).toHaveBeenCalled()
+    expect(thunk.api.post).toHaveBeenCalled()
     expect(result.meta.requestStatus).toBe('rejected')
     expect(result.payload).toBe('error')
   })

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { type BuildPaths } from '../build/types/config'
 import type webpack from 'webpack'
 import path from 'path'
@@ -14,10 +15,11 @@ export default ({ config }: { config: webpack.Configuration }) => {
     entry: '',
     src: path.resolve(__dirname, '..', '..', 'src')
   }
-  config.resolve.modules.push(paths.src)
-  config.resolve.extensions.push('.ts', '.tsx')
+  config.resolve!.modules!.push(paths.src)
+  config.resolve!.extensions!.push('.ts', '.tsx')
 
-  config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
+  const rules = config.module!.rules as RuleSetRule[]
+  config.module!.rules = rules.map((rule: RuleSetRule) => {
     // eslint-disable-next-line @typescript-eslint/prefer-includes
     if (/svg/.test(rule.test as string)) {
       return { ...rule, exclude: /\.svg$/ }
@@ -26,18 +28,18 @@ export default ({ config }: { config: webpack.Configuration }) => {
     return rule
   })
 
-  config.module.rules.push({
+  config.module!.rules.push({
     test: /\.svg$/,
     use: ['@svgr/webpack']
   })
 
-  config.module.rules.push(buildCssLoader(true))
-  config.resolve.modules = [
+  config.module!.rules.push(buildCssLoader(true))
+  config.resolve!.modules = [
     path.resolve(__dirname, '../../src'),
     'node_modules'
   ]
 
-  config.plugins.push(new DefinePlugin({
+  config.plugins!.push(new DefinePlugin({
     __IS_DEV__: true,
     __API__: JSON.stringify('') // Нам не надо ни в какую api передавать запросы
   }))

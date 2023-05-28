@@ -1,6 +1,6 @@
 import { useTheme } from 'app/providers/ThemeProvider'
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
+import { classNames, type Mods } from 'shared/lib/classNames/classNames'
 import { Portal } from '../Portal/Portal'
 import cls from './Modal.module.scss'
 
@@ -20,7 +20,7 @@ export const Modal = ({ className, children, isOpen, onClose, lazy }: ModalProps
   const timerRef = useRef<ReturnType<typeof setTimeout>>() // Прикольный способ типизации
   const { theme } = useTheme()
 
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [cls.opened]: isOpen,
     [cls.isClosing]: isClosing
   }

@@ -12,7 +12,7 @@ interface InputProps extends HTMLInputProps {
 }
 
 export const Input = memo(({ className, value, onChange, placeholder, type = 'text', autofocus, ...otherProps }: InputProps) => {
-  const ref = useRef<HTMLInputElement>()
+  const ref = useRef<HTMLInputElement>(null)
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(e.target.value)
   }
