@@ -1,22 +1,18 @@
-import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { RoutePath } from 'shared/config/RouteConfig/RouteConfig'
+import { memo, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink'
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button'
 import { LangSwitcher } from 'shared/ui/LangSwitcher/LangSwitcher'
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher'
-import HomeIcon from 'shared/assets/icons/home.svg'
-import AboutIcon from 'shared/assets/icons/about.svg'
+import { SidebarItemsList } from 'widgets/Sidebar/model/items'
+import { SidebarItem } from '../SidebarItem/SidebarItem'
 import cls from './Sidebar.module.scss'
 
 interface SidebarProps {
   className?: string
 }
 
-export const Sidebar = ({ className }: SidebarProps) => {
+export const Sidebar = memo(({ className }: SidebarProps) => {
   const [collapsed, setCollapsed] = useState(false)
-  const { t } = useTranslation()
 
   const onToggle = () => {
     setCollapsed((prev) => !prev)
@@ -30,19 +26,14 @@ export const Sidebar = ({ className }: SidebarProps) => {
       ])}
     >
       <div className={cls.items}>
-        <AppLink to={RoutePath.main} theme={AppLinkTheme.PRIMARY}>
-          <HomeIcon className={cls.icon} />
-          <span className={cls.link}>
-             {t('На главную')}
-          </span>
-        </AppLink>
-        <AppLink to={RoutePath.about} theme={AppLinkTheme.PRIMARY}>
-          <AboutIcon className={cls.icon} />
-           <span className={cls.link}>
-             {t('О нас')}
-           </span>
-        </AppLink>
-
+        {SidebarItemsList.map((item) => (
+          <SidebarItem
+            item={item}
+            key={item.path}
+            collapsed={collapsed}
+          />
+        ))
+        }
       </div>
       <Button
         data-testid="sidebar-toggle"
@@ -61,3 +52,4 @@ export const Sidebar = ({ className }: SidebarProps) => {
     </div>
   )
 }
+)
