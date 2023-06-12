@@ -2,5 +2,5 @@ node_modules/
 /build
 .loki/report.html
 .loki/report.json
-/extractedTranslations
+extractedTranslations/
 # /.fttemplates
