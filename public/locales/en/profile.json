@@ -10,5 +10,10 @@
   "Ваше имя": "Your Name",
   "Укажите валюту": "Specify a currency",
   "Укажите страну": "Specify Country",
-  "Имя пользователя": "User's niskname"
+  "Имя пользователя": "User's nickname",
+  "Произошла непредвиденная ошибка": "An unexpected error has occurred",
+  "Некорректный возраст": "Incorrect age",
+  "Неверно указана страна": "Wrong country",
+  "Проверьте введённые пользовательские данные": "Check the entered user data",
+  "Данные не указаны": "No data specified"
 }
