@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type ThunkConfig } from 'app/providers/StoreProvider'
 
 import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm'
-import { ValidateProfileError, type Profile } from '../../types/profile'
+import { ValidateProfileError, type Profile } from '../../types/Profile'
 import { validateProfileData } from '../validateProfileData/validateProfileData'
 
 // <ТоЧтоВозвращаем, Аргумент, config>
@@ -22,6 +22,8 @@ export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<Val
 
     try {
       const response = await extra.api.put<Profile>('/profile', formData)
+
+      if (!response.data) throw new Error()
 
       return response.data
     } catch (e) {

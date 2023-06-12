@@ -2,7 +2,7 @@ export {
   type Profile,
   type ProfileSchema,
   ValidateProfileError
-} from './model/types/profile'
+} from './model/types/Profile'
 
 export {
   profileActions,

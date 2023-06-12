@@ -7,7 +7,8 @@ module.exports = {
   extends: ['plugin:react/recommended', 'standard-with-typescript', 'plugin:i18next/recommended'],
   globals: {
     __IS_DEV__: true,
-    __API__: true
+    __API__: true,
+    __PROJECT__: true
   },
   overrides: [
     {

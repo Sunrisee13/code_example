@@ -8,7 +8,7 @@ import { Loader } from 'shared/ui/Loader/Loader'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 
 import cls from './ProfileCard.module.scss'
-import { type Profile } from '../../model/types/profile'
+import { type Profile } from '../../model/types/Profile'
 import { CountrySelect, type Country } from 'entities/Country'
 
 interface ProfileCardProps {

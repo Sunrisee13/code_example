@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Theme } from 'app/providers/ThemeProvider'
+import StoreDecorator from 'shared/config/storybook/StoreDecorator/StoreDecorator'
 import ThemeDecorator from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 
 import { Sidebar } from './Sidebar'
@@ -9,35 +10,18 @@ import { Sidebar } from './Sidebar'
 const meta: Meta<typeof Sidebar> = {
   title: 'widget/Sidebar',
   component: Sidebar,
-  tags: ['autodocs'],
-  argTypes: {
-    // backgroundColor: { control: 'color' }
-  }
+  decorators: [StoreDecorator({ user: { authData: {} } })]
 }
 
 export default meta
 type Story = StoryObj<typeof Sidebar>
 
-export const Light: Story = {
-  args: {
-  }
-}
+export const Light: Story = {}
 
 export const Dark: Story = {
-  args: {
-  },
   decorators: [ThemeDecorator(Theme.DARK)]
 }
 
-// export const Outline: Story = {
-//   args: {
-//     children: 'Text',
-//     theme: ThemeButton.OUTLINE
-//   }
-// }
-
-// export const OutlineDark: Story = {
-//   args: {
-//     children: 'Text',
-//     theme: ThemeButton.OUTLINE
-//   }
+export const NoAuth: Story = {
+  decorators: [StoreDecorator({ user: {} })]
+}

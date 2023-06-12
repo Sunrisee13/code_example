@@ -15,12 +15,14 @@ const mockedAxios = jest.mocked(axios, true)
 export class TestAsynkThunk<Return, Arg, RejectedValue> {
   dispatch: jest.MockedFn<any> = jest.fn() // Фиг знает, откуда мы этот тип взяли
   // Но если посмотреть на возвращаемый тип jest.fn(), то там, что-то похожее, а тут мы обобщили для функции это
-  getState: () => StateSchema = jest.fn()
 
+  getState: () => StateSchema
   api: jest.MockedFunctionDeep<AxiosStatic> = mockedAxios
   navigate: jest.MockedFn<any> = jest.fn()
   // Тип для action creator копипаст с loginByUsername(когда мы туда навели мышкой)
-  constructor (public actionCreator: ActionCreatorType<Return, Arg, RejectedValue>) {}
+  constructor (public actionCreator: ActionCreatorType<Return, Arg, RejectedValue>, state?: DeepPartial<StateSchema>) {
+    this.getState = jest.fn(() => state as StateSchema)
+  }
 
   async callThunk (arg: Arg) {
     const action = this.actionCreator(arg)
