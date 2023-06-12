@@ -1,10 +1,12 @@
-import { getUserAuthData, userActions } from 'entities/User'
-import { LoginModal } from 'feature/AuthByUsername'
 import { memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
+
+import { LoginModal } from 'feature/AuthByUsername'
+import { getUserAuthData, userActions } from 'entities/User'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
+
 import cls from './Navbar.module.scss'
 
 interface NavbarProps {

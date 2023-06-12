@@ -1,1 +1,14 @@
-{}
+{
+  "Аватар": "Avatar",
+  "Профиль": "Profile",
+  "Редактировать": "Edit",
+  "Сохранить": "Save",
+  "Произошла ошибка при загрузке профиля": "An error occurred while loading the profile",
+  "Ваш возраст": "Your age",
+  "Ваш город": "Your City",
+  "Ваша фамилия": "Your last name",
+  "Ваше имя": "Your Name",
+  "Укажите валюту": "Specify a currency",
+  "Укажите страну": "Specify Country",
+  "Имя пользователя": "User's niskname"
+}
