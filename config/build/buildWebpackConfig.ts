@@ -20,7 +20,8 @@ export function buildWebpackConfig (
       // [name] - entry можно сделать объектом с нескольктими путями, это - имя
       // [contenthash] - в зависимости от контента хэш
       path: paths.build, // Куда кладём файл
-      clean: true // Чистим лишние файлы в бандле (предыдущие)
+      clean: true, // Чистим лишние файлы в бандле (предыдущие)
+      publicPath: '/'
     },
 
     plugins: buildPlugins(options),
