@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Theme } from 'app/providers/ThemeProvider'
 import ThemeDecorator from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { Text, TextTheme } from './Text'
+import { Text, TextSize, TextTheme } from './Text'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Text> = {
@@ -63,4 +63,18 @@ export const OnlyTextDark: Story = {
     text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci et id accusamus quia corporis est fugiat quidem delectus mollitia deleniti? Unde rerum quidem vel, voluptatem harum nemo eligendi error ratione!'
   },
   decorators: [ThemeDecorator(Theme.DARK)]
+}
+
+export const sizeL: Story = {
+  args: {
+    size: TextSize.L,
+    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci et id accusamus quia corporis est fugiat quidem delectus mollitia deleniti? Unde rerum quidem vel, voluptatem harum nemo eligendi error ratione!'
+  }
+}
+
+export const sizeM: Story = {
+  args: {
+    size: TextSize.M,
+    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci et id accusamus quia corporis est fugiat quidem delectus mollitia deleniti? Unde rerum quidem vel, voluptatem harum nemo eligendi error ratione!'
+  }
 }
