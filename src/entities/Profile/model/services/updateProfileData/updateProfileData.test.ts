@@ -17,7 +17,8 @@ const data = {
   first: 'bob',
   city: 'spb',
   currency: Currency.EUR,
-  avatar: '123'
+  avatar: '123',
+  id: '1'
 }
 
 describe('updateProfileData.test', () => {

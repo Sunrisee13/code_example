@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
+import { useParams } from 'react-router-dom'
 
 import { fetchProfileData, getProfileError, getProfileForm, getProfileIsLoading, getProfileReadonly, getProfileValidateErrors, profileActions, ProfileCard, profileReducer, ValidateProfileError } from 'entities/Profile'
 import { type Currency } from 'entities/Currency'
@@ -11,6 +12,7 @@ import { DynamicModuleLoader, type ReducersList } from 'shared/lib/components/Dy
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 
 interface ProfilePageProps {
   className?: string
@@ -25,6 +27,7 @@ const ProfilePage = (props: ProfilePageProps) => {
     className
   } = props
   const { t } = useTranslation('profile')
+  const { id } = useParams<{ id: string }>()
   const dispatch = useAppDispatch()
 
   const validateErrorTranslates = {
@@ -35,9 +38,9 @@ const ProfilePage = (props: ProfilePageProps) => {
     [ValidateProfileError.NO_DATA]: t('Данные не указаны')
   }
 
-  useEffect(() => {
-    if (__PROJECT__ !== 'storybook') dispatch(fetchProfileData())
-  }, [dispatch])
+  useInitialEffect(() => {
+    if (id) dispatch(fetchProfileData(id))
+  })
 
   const formData = useSelector(getProfileForm)
   const error = useSelector(getProfileError)
