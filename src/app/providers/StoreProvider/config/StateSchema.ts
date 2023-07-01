@@ -2,6 +2,7 @@ import { type AnyAction, type Reducer, type ReducersMapObject, type EnhancedStor
 import { type AxiosInstance } from 'axios'
 import { type NavigateOptions, type To } from 'react-router-dom'
 
+import { type ArticlesPageSchema } from 'pages/ArticlesPage'
 import { type ArticleDetailsCommentsSchema } from 'pages/ArcticleDetailsPage'
 import { type LoginSchema } from 'feature/AuthByUsername'
 import { type AddCommentFormSchema } from 'feature/AddCommentForm'
@@ -20,6 +21,7 @@ export interface StateSchema {
   articleDetails?: ArticleDetailsSchema
   articleDetailsComments?: ArticleDetailsCommentsSchema
   addCommentForm?: AddCommentFormSchema
+  articlesPage?: ArticlesPageSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

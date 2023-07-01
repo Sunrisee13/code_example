@@ -5,6 +5,6 @@ export const ArticlesDetailsPageAsync = lazy(
     await new Promise((resolve) =>
       // @ts-expect-error
       // Имитация задержки для курса
-      setTimeout(() => { resolve(import('./ArticleDetailsPage')) }, 1000)
+      setTimeout(() => { resolve(import('./ArticleDetailsPage')) }, 400)
     )
 )
