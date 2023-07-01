@@ -19,6 +19,7 @@ import { getArticleCommentsIsLoading } from '../model/selectors/comments'
 import { fetchCommentsArticleById } from '../model/services/fetchCommentByArticleId'
 import { addCommentForArticle } from '../model/services/addCommentForArticle'
 import { routePath } from 'shared/config/RouteConfig/RouteConfig'
+import { Page } from 'shared/ui/Page/Page'
 
 interface ArticleDetailsPageProps {
   className?: string
@@ -60,7 +61,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames(cls.articleDetailsPage, {}, [className])}>
+      <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
         <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
           {t('Назад к списку')}
         </Button>
@@ -70,7 +71,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
         <CommentList
           isLoading={commentsisLoading}
           comments={comments} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   )
 }
