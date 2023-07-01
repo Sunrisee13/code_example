@@ -6,6 +6,9 @@ export interface UseInfiniteScrollOptions {
   wrapperRef: MutableRefObject<HTMLElement>
 }
 
+// @TODO - С Текущей реализацией есть довольно много проблем на самом деле
+// Если все попадает на экран, он криво отображается, подгрузка лишняя итд. Пока не буду разбираться в этом
+// Но потом можно будет чекнуть
 export function useInfiniteScroll (options: UseInfiniteScrollOptions) {
   const {
     callback,

@@ -6,7 +6,7 @@ import { createReducerManager } from './reducerManager'
 import { type ThunkExtraArg, type StateSchema } from './StateSchema'
 // Мы переписали на функцию, чтобы использовать данную конфигурацию и в других местах
 // <store, action, middleware>
-export function createReduxStore (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>, navigate?: ThunkExtraArg['navigate']) {
+export function createReduxStore (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     counter: counterReducer,
@@ -14,8 +14,7 @@ export function createReduxStore (initialState?: StateSchema, asyncReducers?: Re
   }
 
   const extraArg: ThunkExtraArg = {
-    api: $api,
-    navigate
+    api: $api
   }
 
   const reducerManager = createReducerManager(rootReducers)
