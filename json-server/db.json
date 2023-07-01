@@ -19,6 +19,7 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
+      "userId": "1",
       "type": [
         "IT"
       ],
@@ -154,8 +155,8 @@
     {
       "articleId": "1",
       "userId": "1",
-      "text": "F[f[f[f",
-      "id": "mWsk1OM"
+      "text": "ffff",
+      "id": "g-j-s0G"
     }
   ],
   "users": [
@@ -177,7 +178,7 @@
   "profile": [
     {
       "id": "1",
-      "first": "sunrise",
+      "first": "jgh",
       "lastname": "asf",
       "age": 465,
       "currency": "RUB",
