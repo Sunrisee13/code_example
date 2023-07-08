@@ -1,16 +1,21 @@
 import { type CombinedState, configureStore, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit'
+
+import { uiReducer } from 'feature/UI'
 import { counterReducer } from 'entities/Counter'
 import { userReducer } from 'entities/User'
 import { $api } from 'shared/api/api'
+
 import { createReducerManager } from './reducerManager'
 import { type ThunkExtraArg, type StateSchema } from './StateSchema'
+
 // Мы переписали на функцию, чтобы использовать данную конфигурацию и в других местах
 // <store, action, middleware>
 export function createReduxStore (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     counter: counterReducer,
-    user: userReducer
+    user: userReducer,
+    ui: uiReducer
   }
 
   const extraArg: ThunkExtraArg = {

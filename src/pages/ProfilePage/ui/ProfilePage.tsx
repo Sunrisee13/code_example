@@ -13,7 +13,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
-import { Page } from 'shared/ui/Page/Page'
+import { Page } from 'widgets/Page/Page'
 
 interface ProfilePageProps {
   className?: string

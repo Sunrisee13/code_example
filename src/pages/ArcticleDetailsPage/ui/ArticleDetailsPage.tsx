@@ -19,7 +19,7 @@ import { getArticleCommentsIsLoading } from '../model/selectors/comments'
 import { fetchCommentsArticleById } from '../model/services/fetchCommentByArticleId'
 import { addCommentForArticle } from '../model/services/addCommentForArticle'
 import { routePath } from 'shared/config/RouteConfig/RouteConfig'
-import { Page } from 'shared/ui/Page/Page'
+import { Page } from 'widgets/Page/Page'
 
 interface ArticleDetailsPageProps {
   className?: string
