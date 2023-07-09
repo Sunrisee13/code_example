@@ -5,3 +5,8 @@
   overflow-y: auto;
   flex-shrink: 100; // @TODO Костыль, чтобы сайдбар не вытесняло, хотя все равно есть эффект небольшой
 }
+
+.trigger {
+  height: 20px;
+  margin: 10px;
+}
