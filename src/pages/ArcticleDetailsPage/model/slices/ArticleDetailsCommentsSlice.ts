@@ -19,7 +19,7 @@ const commentsAdapter = createEntityAdapter<Comment>({
 
 // Тут мы типо определили селектор, на кусок стейта, или если он не определен, чтобы возвращался initialState
 export const getArticleComments = commentsAdapter.getSelectors<StateSchema>(
-  (state) => state.articleDetailsComments || commentsAdapter.getInitialState()
+  (state) => state.articleDetailsPage?.comments || commentsAdapter.getInitialState()
 )
 
 const articleDetailsCommentSlice = createSlice({

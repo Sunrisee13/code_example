@@ -1,10 +1,11 @@
 import { type Decorator } from '@storybook/react'
+
 import { type StateSchema, StoreProvider } from 'app/providers/StoreProvider'
-import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice'
-import { profileReducer } from 'entities/Profile'
+import { articleDetailsPageReducer } from 'pages/ArcticleDetailsPage/model/slices'
 import { addCommentFormReducer } from 'feature/AddCommentForm/model/slices/addCommentFormSlice'
 import { loginReducer } from 'feature/AuthByUsername/model/slice/loginSlice'
-import { articlieDetailsCommentsReducer } from 'pages/ArcticleDetailsPage/model/slices/ArticleDetailsCommentsSlice'
+import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice'
+import { profileReducer } from 'entities/Profile'
 import { type ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 
 const defaultAsyncReducers: ReducersList = {
@@ -12,7 +13,7 @@ const defaultAsyncReducers: ReducersList = {
   profile: profileReducer,
   articleDetails: articleDetailsReducer,
   addCommentForm: addCommentFormReducer,
-  articleDetailsComments: articlieDetailsCommentsReducer
+  articleDetailsPage: articleDetailsPageReducer
 }
 
 const StoreDecorator =

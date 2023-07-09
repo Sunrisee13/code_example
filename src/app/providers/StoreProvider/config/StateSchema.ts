@@ -2,7 +2,7 @@ import { type AnyAction, type Reducer, type ReducersMapObject, type EnhancedStor
 import { type AxiosInstance } from 'axios'
 
 import { type ArticlesPageSchema } from 'pages/ArticlesPage'
-import { type ArticleDetailsCommentsSchema } from 'pages/ArcticleDetailsPage'
+import { type ArticleDetailsResommendationsSchema, type ArticleDetailsCommentsSchema, type ArticleDetailsPageSchema } from 'pages/ArcticleDetailsPage'
 import { type LoginSchema } from 'feature/AuthByUsername'
 import { type UISchema } from 'feature/UI'
 import { type AddCommentFormSchema } from 'feature/AddCommentForm'
@@ -20,7 +20,7 @@ export interface StateSchema {
   loginForm?: LoginSchema
   profile?: ProfileSchema
   articleDetails?: ArticleDetailsSchema
-  articleDetailsComments?: ArticleDetailsCommentsSchema
+  articleDetailsPage?: ArticleDetailsPageSchema
   addCommentForm?: AddCommentFormSchema
   articlesPage?: ArticlesPageSchema
 }
