@@ -3,6 +3,7 @@ import ReactRefreshWEbpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import webpack from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import CopyPlugin from 'copy-webpack-plugin'
 
 import { type BuildOptions } from './types/config'
 
@@ -31,6 +32,13 @@ export function buildPlugins ({
     __API__: JSON.stringify(apiURL),
     __PROJECT__: JSON.stringify(project)
   })]
+
+  // eslint-disable-next-line no-new
+  new CopyPlugin({
+    patterns: [
+      { from: paths.locales, to: paths.buildLocales }
+    ]
+  })
 
   if (isDev) {
     plugins.push(new ReactRefreshWEbpackPlugin())

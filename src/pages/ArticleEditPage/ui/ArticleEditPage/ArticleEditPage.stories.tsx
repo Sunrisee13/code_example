@@ -4,7 +4,7 @@ import { ArticleEditPage } from './ArticleEditPage'
 
 const meta: Meta<typeof ArticleEditPage> = {
   title: 'shared/ArticleEditPage',
-  component: ArticleEditPage,
+  component: ArticleEditPage
 }
 
 export default meta

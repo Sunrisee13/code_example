@@ -4,7 +4,7 @@ import { ArticleDetailsPageHeader } from './ArticleDetailsPageHeader'
 
 const meta: Meta<typeof ArticleDetailsPageHeader> = {
   title: 'shared/ArticleDetailsPageHeader',
-  component: ArticleDetailsPageHeader,
+  component: ArticleDetailsPageHeader
 }
 
 export default meta
