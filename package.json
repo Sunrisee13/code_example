@@ -14,7 +14,7 @@
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
-    "build:prod": "webpack --env mode=production apiUrl=https://ulbi-back-blond.vercel.app",
+    "build:prod": "webpack --env mode=production apiURL=https://ulbi-back-blond.vercel.app",
     "build:dev": "webpack --env mode=development",
     "lint:ts": "npx eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "npx eslint \"**/*.{ts,tsx}\" --fix",
