@@ -8,18 +8,20 @@ import EyeIcon from 'shared/assets/icons/eye.svg'
 import { Card } from 'shared/ui/Card/Card'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
+import { routePath } from 'shared/config/RouteConfig/RouteConfig'
+import { AppLink } from 'shared/ui/AppLink/AppLink'
+import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from 'shared/consts/localstorage'
 
 import { ArticleBlockType, type ArticleTextBlock, ArticleView, type Article } from '../../model/types/article'
 import cls from './ArticleListItem.module.scss'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
-import { routePath } from 'shared/config/RouteConfig/RouteConfig'
-import { AppLink } from 'shared/ui/AppLink/AppLink'
 
 interface ArticleListItemProps {
   className?: string
   article: Article
   view: ArticleView
   target?: HTMLAttributeAnchorTarget
+  index: number
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
@@ -27,7 +29,8 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     className,
     article,
     view,
-    target
+    target,
+    index
   } = props
   const { t } = useTranslation()
 
@@ -38,6 +41,10 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
       <Icon Svg={EyeIcon} />
     </>
   )
+
+  const handleButtonClick = () => {
+    sessionStorage.setItem(ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX, JSON.stringify(index))
+  }
 
   if (view === ArticleView.BIG) {
     const textBlock = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock
@@ -57,7 +64,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
           )}
           <div className={cls.footer}>
             <AppLink to={routePath.article_details + article.id} target={target}>
-              <Button theme={ButtonTheme.OUTLINE} >
+              <Button theme={ButtonTheme.OUTLINE} onClick={handleButtonClick} >
                 {t('Читать далее')}
               </Button>
             </AppLink>
