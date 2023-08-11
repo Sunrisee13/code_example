@@ -10,7 +10,7 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { ButtonTheme, Button } from 'shared/ui/Button/Button'
 
 import cls from './ArticleDetailsPageHeader.module.scss'
-import { getCanEditArticle } from 'pages/ArcticleDetailsPage/model/selectors/article'
+import { getCanEditArticle } from '../../model/selectors/article'
 
 interface ArticleDetailsPageHeaderProps {
   className?: string

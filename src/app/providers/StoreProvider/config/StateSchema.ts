@@ -2,7 +2,7 @@ import { type AnyAction, type Reducer, type ReducersMapObject, type EnhancedStor
 import { type AxiosInstance } from 'axios'
 
 import { type ArticlesPageSchema } from 'pages/ArticlesPage'
-import { type ArticleDetailsResommendationsSchema, type ArticleDetailsCommentsSchema, type ArticleDetailsPageSchema } from 'pages/ArcticleDetailsPage'
+import { type ArticleDetailsPageSchema } from 'pages/ArcticleDetailsPage'
 import { type LoginSchema } from 'feature/AuthByUsername'
 import { type UISchema } from 'feature/UI'
 import { type AddCommentFormSchema } from 'feature/AddCommentForm'

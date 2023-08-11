@@ -23,7 +23,7 @@ module.exports = {
     sourceType: 'module',
     project: 'tsconfig.json'
   },
-  plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
+  plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'sunrise-y-plugin'],
   rules: {
     'react/react-in-jsx-scope': 0,
     '@typescript-eslint/strict-boolean-expressions': 0,
@@ -36,6 +36,7 @@ module.exports = {
     'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['to', 'data-testid', 'name', 'alt', 'target'] }],
     'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
     'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
-    'react/display-name': 0
+    'react/display-name': 0,
+    'sunrise-y-plugin/path-checker': 'error'
   }
 }
