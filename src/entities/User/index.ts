@@ -1,3 +1,7 @@
+export { UserRole } from './model/types/user'
+
+export { isUserAdmin, isUserManager, getUserRoles } from './model/selectors/roleSelectors'
+
 export { getUserInited } from './model/selectors/getUserInited/getUserInited'
 export { getUserAuthData } from './model/selectors/getUserAuthData/getUserAuthData'
 
