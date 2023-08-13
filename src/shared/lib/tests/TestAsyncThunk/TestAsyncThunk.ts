@@ -12,7 +12,7 @@ const mockedAxios = jest.mocked(axios, true)
 // Мы перенесли мок аксиоса в файл
 
 // Если вдруг забуду специфику работы этого класса, можно раскоментить код в loginByUsername.test.ts (src/feature/AuthByUsername/model/services/loginByUsername)
-export class TestAsynkThunk<Return, Arg, RejectedValue> {
+export class TestAsyncThunk<Return, Arg, RejectedValue> {
   dispatch: jest.MockedFn<any> = jest.fn() // Фиг знает, откуда мы этот тип взяли
   // Но если посмотреть на возвращаемый тип jest.fn(), то там, что-то похожее, а тут мы обобщили для функции это
 

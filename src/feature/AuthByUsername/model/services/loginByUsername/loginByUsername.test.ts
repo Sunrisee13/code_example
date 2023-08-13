@@ -1,6 +1,6 @@
 import { userActions } from 'entities/User'
 import { loginByUsername } from './loginByUsername'
-import { TestAsynkThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
+import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
 
 // jest.mock('axios') // Убрать нельзя, тк ниже мы уже обрабатываем мокнутую библиотеку(как я понял)
 
@@ -46,7 +46,7 @@ describe('loginByUsername.test', () => {
   test('success login', async () => {
     const userValue = { username: 'Sasha', id: '12' }
 
-    const thunk = new TestAsynkThunk(loginByUsername)
+    const thunk = new TestAsyncThunk(loginByUsername)
     thunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }))
     const result = await thunk.callThunk({ username: '123', password: '134' })
 
@@ -58,7 +58,7 @@ describe('loginByUsername.test', () => {
   })
 
   test('error login', async () => {
-    const thunk = new TestAsynkThunk(loginByUsername)
+    const thunk = new TestAsyncThunk(loginByUsername)
     thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }))
     const result = await thunk.callThunk({ username: '123', password: '134' })
 

@@ -7,6 +7,7 @@ import { $api } from 'shared/api/api'
 
 import { createReducerManager } from './reducerManager'
 import { type ThunkExtraArg, type StateSchema } from './StateSchema'
+import { rtkApi } from 'shared/api/rtkApi'
 
 // Мы переписали на функцию, чтобы использовать данную конфигурацию и в других местах
 // <store, action, middleware>
@@ -15,7 +16,8 @@ export function createReduxStore (initialState?: StateSchema, asyncReducers?: Re
     ...asyncReducers,
     counter: counterReducer,
     user: userReducer,
-    ui: uiReducer
+    ui: uiReducer,
+    [rtkApi.reducerPath]: rtkApi.reducer
   }
 
   const extraArg: ThunkExtraArg = {
@@ -33,7 +35,7 @@ export function createReduxStore (initialState?: StateSchema, asyncReducers?: Re
       thunk: {
         extraArgument: extraArg
       }
-    })
+    }).concat(rtkApi.middleware)
   })
   // @ts-expect-error
   store.reducerManager = reducerManager
