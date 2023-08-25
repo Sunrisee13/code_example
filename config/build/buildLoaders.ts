@@ -1,25 +1,27 @@
 import type webpack from 'webpack'
-import { buildBabelLoader } from './loaders/buildBabelLoader'
 import { buildCssLoader } from './loaders/buildCssLoader'
 import { type BuildOptions } from './types/config'
-
-// Лоадеры нужны для работы с нестандартными файлами
+import { buildBabelLoader } from './loaders/buildBabelLoader'
 
 export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] {
-  // копипаст с документации
-  const babelLoader = buildBabelLoader(options)
-
-  // Если не используем typeScript, нужен babel-loader
-  const typeScriptLoader = {
-    test: /\.tsx?$/,
-    use: 'ts-loader',
-    exclude: /node_modules/
-  }
+  const { isDev } = options
 
   const svgLoader = {
     test: /\.svg$/,
     use: ['@svgr/webpack']
   }
+
+  const codeBabelLoader = buildBabelLoader({ ...options, isTsx: false })
+  const tsxCodeBabelLoader = buildBabelLoader({ ...options, isTsx: true })
+
+  const cssLoader = buildCssLoader(isDev)
+
+  // Если не используем тайпскрипт - нужен babel-loader
+  // const typescriptLoader = {
+  //     test: /\.tsx?$/,
+  //     use: 'ts-loader',
+  //     exclude: /node_modules/,
+  // };
 
   const fileLoader = {
     test: /\.(png|jpe?g|gif|woff2|woff)$/i,
@@ -30,8 +32,12 @@ export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] {
     ]
   }
 
-  // для этого надо ещё миллион всего установить npm i -D sass-loader@12.6.0 sass@1.49.9 style-loader@3.3.1 css-loader@6.6.0
-  const cssLoader = buildCssLoader(options.isDev)
-
-  return [svgLoader, fileLoader, babelLoader, typeScriptLoader, cssLoader]
+  return [
+    fileLoader,
+    svgLoader,
+    codeBabelLoader,
+    tsxCodeBabelLoader,
+    // typescriptLoader,
+    cssLoader
+  ]
 }

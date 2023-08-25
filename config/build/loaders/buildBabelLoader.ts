@@ -1,30 +1,41 @@
 import { type BuildOptions } from '../types/config'
 
-export function buildBabelLoader (options: BuildOptions) {
+import babelRemovePropsPlugin from '../../babel/babelRemovePropsPlugin'
+
+interface BuildBabelLoaderProps extends BuildOptions {
+  isTsx?: boolean
+}
+
+export function buildBabelLoader ({ isDev, isTsx }: BuildBabelLoaderProps) {
   return {
-    test: /\.(js|jsx|ts|tsx)$/, // ts не забыли?
+    test: isTsx ? /\.(jsx|tsx)$/ : /\.(js|ts)$/,
     exclude: /node_modules/,
     use: {
       loader: 'babel-loader',
       options: {
-        presets: ['@babel/preset-env'], // Пресет, который преобразует код в зависимости от окружения
+        presets: ['@babel/preset-env'],
         plugins: [
           [
             'i18next-extract',
-            // Для того, чтобы плагин видел файлы локализаций, можно использовать структуру ключа
-            // t("locale-file:key")
-            // Если у вас VSСode и установлен плагин i18n-ally, то он не хочет понимать такую структуру ключа, тогда можно использовать структуру:
-            // t("key", {ns: "locale-file"})
-            // эту структуру понимают все
-            // Вроде как у меня работает автоперенос в перевод, но я не уверен, что я всё делаю правильно ради плагина
-            // Если что, потом вернусь к этому и разберусь
             {
               locales: ['ru', 'en'],
-              keyAsDefaultValue: true,
-              saveMissing: true,
-              outputPath: 'public/locales/{{locale}}/{{ns}}.json'
+              keyAsDefaultValue: true
             }
-          ], options.isDev && require.resolve('react-refresh/babel')
+          ],
+          [
+            '@babel/plugin-transform-typescript',
+            {
+              isTsx
+            }
+          ],
+          '@babel/plugin-transform-runtime',
+          isTsx && [
+            babelRemovePropsPlugin,
+            {
+              props: ['data-testid']
+            }
+          ],
+          isDev && require.resolve('react-refresh/babel')
         ].filter(Boolean)
       }
     }
