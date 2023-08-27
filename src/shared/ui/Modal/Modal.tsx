@@ -1,6 +1,10 @@
-import { useTheme } from 'app/providers/ThemeProvider'
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { classNames, type Mods } from 'shared/lib/classNames/classNames'
+import React, {
+  type MutableRefObject,
+  type ReactNode, useCallback, useEffect, useRef, useState
+} from 'react'
+import { useTheme } from 'app/providers/ThemeProvider'
+import { Overlay } from '../Overlay/Overlay'
 import { Portal } from '../Portal/Portal'
 import cls from './Modal.module.scss'
 
@@ -12,18 +16,27 @@ interface ModalProps {
   lazy?: boolean
 }
 
-const ANIMATION_DELAY = 200
+const ANIMATION_DELAY = 300
 
-export const Modal = ({ className, children, isOpen, onClose, lazy }: ModalProps) => {
+export const Modal = (props: ModalProps) => {
+  const {
+    className,
+    children,
+    isOpen,
+    onClose,
+    lazy
+  } = props
+
   const [isClosing, setIsClosing] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
-  const timerRef = useRef<ReturnType<typeof setTimeout>>() // Прикольный способ типизации
+  const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>
   const { theme } = useTheme()
 
-  const mods: Mods = {
-    [cls.opened]: isOpen,
-    [cls.isClosing]: isClosing
-  }
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true)
+    }
+  }, [isOpen])
 
   const closeHandler = useCallback(() => {
     if (onClose) {
@@ -35,9 +48,6 @@ export const Modal = ({ className, children, isOpen, onClose, lazy }: ModalProps
     }
   }, [onClose])
 
-  const onContentClick = (e: React.MouseEvent) => {
-    e.stopPropagation()
-  }
   // Новые ссылки!!!
   const onKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape') {
@@ -47,35 +57,34 @@ export const Modal = ({ className, children, isOpen, onClose, lazy }: ModalProps
 
   useEffect(() => {
     if (isOpen) {
-      setIsMounted(true)
-    }
-  }, [isOpen])
-
-  useEffect(() => {
-    if (isOpen) {
       window.addEventListener('keydown', onKeyDown)
     }
+
     return () => {
       clearTimeout(timerRef.current)
       window.removeEventListener('keydown', onKeyDown)
     }
   }, [isOpen, onKeyDown])
 
+  const mods: Mods = {
+    [cls.opened]: isOpen,
+    [cls.isClosing]: isClosing
+  }
+
   if (lazy && !isMounted) {
     return null
   }
 
-  // Семантически не особо правильно вешать обработчик на клик на div, позже будем фиксить
-
   return (
-    <Portal>
-      <div className={classNames(cls.Modal, mods, [className, theme])}>
-        <div className={cls.overlay} onClick={closeHandler}>
-          <div className={cls.content} onClick={onContentClick} >
-            {children}
-          </div>
-        </div>
-      </div>
-    </Portal>
+        <Portal>
+            <div className={classNames(cls.Modal, mods, [className, theme, 'app_modal'])}>
+                <Overlay onClick={closeHandler} />
+                <div
+                    className={cls.content}
+                >
+                    {children}
+                </div>
+            </div>
+        </Portal>
   )
 }
