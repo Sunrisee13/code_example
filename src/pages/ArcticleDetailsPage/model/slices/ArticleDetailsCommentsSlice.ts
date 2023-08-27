@@ -4,8 +4,8 @@ import {
   type PayloadAction
 } from '@reduxjs/toolkit'
 
-import { type StateSchema } from 'app/providers/StoreProvider'
-import { type Comment } from 'entities/Comment'
+import { type StateSchema } from '@/app/providers/StoreProvider'
+import { type Comment } from '@/entities/Comment'
 
 import { fetchCommentsArticleById } from '../services/fetchCommentByArticleId'
 import { type ArticleDetailsCommentsSchema } from '../types/ArticleDetailsCommentsSchema'

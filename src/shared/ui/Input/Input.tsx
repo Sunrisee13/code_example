@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useRef, type InputHTMLAttributes } from 'react'
 
-import { classNames, type Mods } from 'shared/lib/classNames/classNames'
+import { classNames, type Mods } from '@/shared/lib/classNames/classNames'
 
 import cls from './Input.module.scss'
 

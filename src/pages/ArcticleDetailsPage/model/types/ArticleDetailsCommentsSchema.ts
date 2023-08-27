@@ -1,6 +1,6 @@
 import { type EntityState } from '@reduxjs/toolkit'
 
-import { type Comment } from 'entities/Comment'
+import { type Comment } from '@/entities/Comment'
 
 //  30ая минута, 51ого урока, Тимур показывает, как он копался в этих типах, надо будет пересмотреть.
 

@@ -7,6 +7,8 @@ export function buildResolvers (options: BuildOptions): ResolveOptions {
     preferAbsolute: true, // https://webpack.js.org/configuration/resolve/#resolvemodules
     modules: [options.paths.src, 'node_modules'], // c каких папок пути будут абсолютными
     mainFiles: ['index'], // Для каждого модуля, главный файл - index
-    alias: {} // Можно настроить значок, допустим @ перед абсолют импортами
+    alias: {
+      '@': options.paths.src
+    }
   }
 }

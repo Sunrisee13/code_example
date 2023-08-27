@@ -37,7 +37,13 @@ export default {
   setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts'],
   moduleNameMapper: {
     '\\.s?css$': 'identity-obj-proxy',
-    '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx') // Сделали пустой компонент, который будет залетать вместо иконки
+    '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'), // Сделали пустой компонент, который будет залетать вместо иконки
+    '^@/shared(.*)$': '<rootDir>/src/shared$1',
+    '^@/entities(.*)$': '<rootDir>/src/entities$1',
+    '^@/features(.*)$': '<rootDir>/src/features$1',
+    '^@/widgets(.*)$': '<rootDir>/src/widgets$1',
+    '^@/pages(.*)$': '<rootDir>/src/pages$1',
+    '^@/app(.*)$': '<rootDir>/src/app$1'
   },
   reporters: [
     'default',
@@ -48,6 +54,7 @@ export default {
       inlineSource: true
     }]
   ]
+
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
