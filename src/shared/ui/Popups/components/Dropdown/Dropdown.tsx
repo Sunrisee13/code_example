@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import { Menu } from '@headlessui/react'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { Fragment, type ReactNode } from 'react'
@@ -37,7 +36,7 @@ export function Dropdown (props: DropdownProps) {
                 {trigger}
             </Menu.Button>
             <Menu.Items className={classNames(cls.menu, {}, menuClasses)}>
-                {items.map((item) => {
+                {items.map((item, index) => {
                   const content = ({ active }: { active: boolean }) => (
                         <button
                             type="button"
@@ -51,14 +50,14 @@ export function Dropdown (props: DropdownProps) {
 
                   if (item.href) {
                     return (
-                            <Menu.Item as={AppLink} to={item.href} disabled={item.disabled}>
+                            <Menu.Item key={index} as={AppLink} to={item.href} disabled={item.disabled}>
                                 {content}
                             </Menu.Item>
                     )
                   }
 
                   return (
-                        <Menu.Item as={Fragment} disabled={item.disabled}>
+                        <Menu.Item key={index} as={Fragment} disabled={item.disabled}>
                             {content}
                         </Menu.Item>
                   )
