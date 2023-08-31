@@ -16,6 +16,8 @@ import { fetchArticleRecommendations } from '../model/services/fetchRecommendati
 import { articleDetailsPageReducer } from '../model/slices'
 import { ArticleDetailsPageHeader } from './ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 import { ArticleDetailsComments } from './ArticleDetailsComments/ArticleDetailsComments'
+import { VStack } from '@/shared/ui/Stack'
+import { ArticleRating } from '@/feature/articleRating'
 
 interface ArticleDetailsPageProps {
   className?: string
@@ -25,35 +27,27 @@ const reducers: ReducersList = {
   articleDetailsPage: articleDetailsPageReducer
 }
 
-const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
+const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   const { className } = props
-  const { t } = useTranslation()
-  const { id } = useParams()
-
-  const dispatch = useAppDispatch()
-
-  useInitialEffect(() => {
-    dispatch(fetchCommentsArticleById(id))
-    dispatch(fetchArticleRecommendations())
-  })
+  const { t } = useTranslation('article-details')
+  const { id } = useParams<{ id: string }>()
 
   if (!id) {
-    return (
-      <div className={classNames(cls.articleDetailsPage, {}, [className])}>
-        {t('Статья не найдена')}
-      </div>
-    )
+    return null
   }
 
   return (
-    <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
-        <ArticleDetailsPageHeader />
-        <ArticleDetails id={id} />
-        <ArticleRecommendations className={cls.recomendations} />
-        <ArticleDetailsComments id={id} />
-      </Page>
-    </DynamicModuleLoader>
+      <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+          <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+              <VStack gap="16" max>
+                  <ArticleDetailsPageHeader />
+                  <ArticleDetails id={id} />
+                  <ArticleRating articleId={id} />
+                  <ArticleRecommendations />
+                  <ArticleDetailsComments id={id} />
+              </VStack>
+          </Page>
+      </DynamicModuleLoader>
   )
 }
 
