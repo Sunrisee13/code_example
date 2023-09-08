@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames'
-import React, {
+import {
   memo, type ReactNode, useCallback, useEffect
 } from 'react'
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/AnimationProvider'
@@ -81,18 +81,18 @@ export const DrawerContent = memo((props: DrawerProps) => {
   const display = y.to((py: any) => (py < height ? 'block' : 'none'))
 
   return (
-        <Portal>
-            <div className={classNames(cls.Drawer, {}, [className, theme, 'app_drawer'])}>
-                <Overlay onClick={close} />
-                <Spring.a.div
-                    className={cls.sheet}
-                    style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
-                    {...bind()}
-                >
-                    {children}
-                </Spring.a.div>
-            </div>
-        </Portal>
+    <Portal>
+      <div className={classNames(cls.Drawer, {}, [className, theme, 'app_drawer'])}>
+        <Overlay onClick={close} />
+        <Spring.a.div
+          className={cls.sheet}
+          style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
+          {...bind()}
+        >
+          {children}
+        </Spring.a.div>
+      </div>
+    </Portal>
   )
 })
 
@@ -108,8 +108,8 @@ const DrawerAsync = (props: DrawerProps) => {
 
 export const Drawer = (props: DrawerProps) => {
   return (
-      <AnimationProvider>
-          <DrawerAsync {...props} />
-      </AnimationProvider>
+    <AnimationProvider>
+      <DrawerAsync {...props} />
+    </AnimationProvider>
   )
 }
