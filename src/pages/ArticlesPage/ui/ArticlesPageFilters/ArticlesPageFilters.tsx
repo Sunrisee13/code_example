@@ -14,7 +14,7 @@ import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchA
 import { articlesPageActions } from '../../model/slices/articlesPageSlice'
 import cls from './ArticlesPageFilters.module.scss'
 import { getArticlesPageOrder, getArticlesPageSearch, getArticlesPageSort, getArticlesPageType, getArticlesPageView } from '../../model/selectors/articlesPageSelectors'
-import { ArticleTypeTabs } from '@/entities/Article/ui/ArticleTypeTabs/ArticleTypeTabs'
+import { ArticleTypeTabs } from '@/entities/Article'
 
 interface ArticlesPageFiltersProps {
   className?: string

@@ -1,8 +1,7 @@
 import { memo } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 
-import { Page } from '@/widgets/Page/Page'
+import { Page } from '@/widgets/Page'
 import { ArticleDetails } from '@/entities/Article'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { DynamicModuleLoader, type ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
@@ -25,7 +24,6 @@ const reducers: ReducersList = {
 
 const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   const { className } = props
-  const { t } = useTranslation('article-details')
   const { id } = useParams<{ id: string }>()
 
   if (!id) {
