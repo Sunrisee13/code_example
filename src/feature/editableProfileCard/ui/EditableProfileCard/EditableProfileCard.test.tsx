@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-confusing-void-expression */
-/* eslint-disable @typescript-eslint/await-thenable */
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 

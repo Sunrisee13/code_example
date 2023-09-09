@@ -10,6 +10,7 @@ import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
+    layout: 'fullscreen',
     controls: {
       matchers: {
         color: /(background|color)$/i,
