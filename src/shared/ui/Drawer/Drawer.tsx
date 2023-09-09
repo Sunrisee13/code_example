@@ -3,7 +3,8 @@ import {
   memo, type ReactNode, useCallback, useEffect
 } from 'react'
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/AnimationProvider'
-import { useTheme } from '@/app/providers/ThemeProvider'
+import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme'
+
 import { Overlay } from '../Overlay/Overlay'
 import cls from './Drawer.module.scss'
 import { Portal } from '../Portal/Portal'

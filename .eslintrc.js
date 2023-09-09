@@ -40,6 +40,13 @@ module.exports = {
     'sunrise-y-plugin/path-checker': ['error', { alias: '@' }],
     'sunrise-y-plugin/public-api-imports': ['error', {
       alias: '@', testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx']
-    }]
+    }],
+    'sunrise-y-plugin/layer-imports': [
+      'error',
+      {
+        alias: '@',
+        ignoreImportPatterns: ['**/StoreProvider', '**/testing']
+      }
+    ]
   }
 }

@@ -1,3 +1,4 @@
+// eslint-disable-next-line sunrise-y-plugin/layer-imports
 import { type UserRole } from '@/entities/User'
 import { type RouteProps } from 'react-router-dom'
 

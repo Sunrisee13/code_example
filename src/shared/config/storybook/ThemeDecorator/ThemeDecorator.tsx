@@ -1,6 +1,8 @@
 /* eslint-disable react/display-name */
+// eslint-disable-next-line sunrise-y-plugin/layer-imports
+import { ThemeProvider } from '@/app/providers/ThemeProvider'
+import { type Theme } from '@/shared/consts/theme'
 import { type Decorator } from '@storybook/react'
-import { ThemeProvider, type Theme } from '@/app/providers/ThemeProvider'
 
 // Распишу на примере этого декоратора, остальные гораздо проще
 // Мы вызываем декораток с темой, он замыкает в себе значение и возвращает коллбэк декоратор
