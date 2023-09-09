@@ -1,6 +1,7 @@
 import { userActions } from '@/entities/User'
-import { loginByUsername } from './loginByUsername'
 import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
+
+import { loginByUsername } from './loginByUsername'
 
 // jest.mock('axios') // Убрать нельзя, тк ниже мы уже обрабатываем мокнутую библиотеку(как я понял)
 

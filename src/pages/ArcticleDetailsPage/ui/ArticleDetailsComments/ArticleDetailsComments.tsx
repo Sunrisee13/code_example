@@ -1,18 +1,19 @@
-import { useTranslation } from 'react-i18next'
 import { memo, useCallback } from 'react'
+
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { AddCommentForm } from '@/feature/AddCommentForm'
 import { CommentList } from '@/entities/Comment'
+import { AddCommentForm } from '@/feature/AddCommentForm'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { Text, TextSize } from '@/shared/ui/Text'
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { VStack } from '@/shared/ui/Stack'
+import { Text, TextSize } from '@/shared/ui/Text'
 
-import { getArticleComments } from '../../model/slices/ArticleDetailsCommentsSlice'
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments'
 import { addCommentForArticle } from '../../model/services/addCommentForArticle'
 import { fetchCommentsArticleById } from '../../model/services/fetchCommentByArticleId'
+import { getArticleComments } from '../../model/slices/ArticleDetailsCommentsSlice'
 
 interface ArticleDetailsCommentsProps {
   className?: string

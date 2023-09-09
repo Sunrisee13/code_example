@@ -1,7 +1,9 @@
+import path from 'path'
+
 import type webpack from 'webpack'
+
 import { buildWebpackConfig } from './config/build/buildWebpackConfig'
 import { type BuildEnv, type BuildPaths } from './config/build/types/config'
-import path from 'path'
 
 // На убунте запуск sudo webpack, когда установим глобально или npx webpack
 // При глобальном использовании, первый раз поставились права для root пользователя

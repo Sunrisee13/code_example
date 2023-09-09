@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { type BuildPaths } from '../build/types/config'
-import type webpack from 'webpack'
 import path from 'path'
-import { buildCssLoader } from '../build/loaders/buildCssLoader'
+
+import type webpack from 'webpack'
 import { DefinePlugin, type RuleSetRule } from 'webpack'
+
+import { buildCssLoader } from '../build/loaders/buildCssLoader'
+import { type BuildPaths } from '../build/types/config'
 
 // По дефолту сторибук имеет свою конфигурацию вебпака и мы можем её переопределять
 // Большинство написанного здесь - подсказки со стак оферфлоу или доки, лучше пересмотреть видос

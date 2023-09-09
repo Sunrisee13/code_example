@@ -1,14 +1,14 @@
 import { memo } from 'react'
-import { routePath } from '@/shared/consts/router'
 
+import { routePath } from '@/shared/consts/router'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { AppLink } from '@/shared/ui/AppLink'
 import { Avatar } from '@/shared/ui/Avatar'
 import { Skeleton } from '@/shared/ui/Skeleton'
 import { Text } from '@/shared/ui/Text'
 
-import { type Comment } from '../../model/types/comment'
 import cls from './CommentCard.module.scss'
+import { type Comment } from '../../model/types/comment'
 
 interface CommentCardProps {
   comment?: Comment

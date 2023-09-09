@@ -1,9 +1,10 @@
-import { type StateSchema } from '@/app/providers/StoreProvider'
-import { getUIScrollByPath, uiActions } from '@/feature/UI'
 import { memo, type MutableRefObject, useRef, type ReactNode, type UIEvent } from 'react'
+
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
+import { type StateSchema } from '@/app/providers/StoreProvider'
+import { getUIScrollByPath, uiActions } from '@/feature/UI'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll'

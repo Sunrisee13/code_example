@@ -1,19 +1,20 @@
 import { type HTMLAttributeAnchorTarget, memo } from 'react'
+
 import { useTranslation } from 'react-i18next'
 
-import { classNames } from '@/shared/lib/classNames/classNames'
-import { Icon } from '@/shared/ui/Icon'
-import { Text } from '@/shared/ui/Text'
 import EyeIcon from '@/shared/assets/icons/eye.svg'
-import { Card } from '@/shared/ui/Card'
+import { routePath } from '@/shared/consts/router'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { AppLink } from '@/shared/ui/AppLink'
 import { Avatar } from '@/shared/ui/Avatar'
 import { Button, ButtonTheme } from '@/shared/ui/Button'
+import { Card } from '@/shared/ui/Card'
+import { Icon } from '@/shared/ui/Icon'
+import { Text } from '@/shared/ui/Text'
 
-import { ArticleBlockType, type ArticleTextBlock, ArticleView, type Article } from '../../model/types/article'
 import cls from './ArticleListItem.module.scss'
+import { ArticleBlockType, type ArticleTextBlock, ArticleView, type Article } from '../../model/types/article'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
-import { routePath } from '@/shared/consts/router'
-import { AppLink } from '@/shared/ui/AppLink'
 
 interface ArticleListItemProps {
   className?: string

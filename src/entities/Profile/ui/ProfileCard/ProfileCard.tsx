@@ -1,15 +1,15 @@
 import { useTranslation } from 'react-i18next'
 
+import { CountrySelect, type Country } from '@/entities/Country'
 import { type Currency, CurrencySelect } from '@/entities/Currency'
 import { classNames } from '@/shared/lib/classNames/classNames'
-import { Text, TextAlign, TextTheme } from '@/shared/ui/Text'
+import { Avatar } from '@/shared/ui/Avatar'
 import { Input } from '@/shared/ui/Input'
 import { Loader } from '@/shared/ui/Loader'
-import { Avatar } from '@/shared/ui/Avatar'
+import { Text, TextAlign, TextTheme } from '@/shared/ui/Text'
 
 import cls from './ProfileCard.module.scss'
 import { type Profile } from '../../model/types/Profile'
-import { CountrySelect, type Country } from '@/entities/Country'
 
 interface ProfileCardProps {
   className?: string

@@ -1,12 +1,12 @@
 import { type CombinedState, configureStore, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit'
 
-import { uiReducer } from '@/feature/UI'
 import { userReducer } from '@/entities/User'
+import { uiReducer } from '@/feature/UI'
 import { $api } from '@/shared/api/api'
+import { rtkApi } from '@/shared/api/rtkApi'
 
 import { createReducerManager } from './reducerManager'
 import { type ThunkExtraArg, type StateSchema } from './StateSchema'
-import { rtkApi } from '@/shared/api/rtkApi'
 
 // Мы переписали на функцию, чтобы использовать данную конфигурацию и в других местах
 // <store, action, middleware>

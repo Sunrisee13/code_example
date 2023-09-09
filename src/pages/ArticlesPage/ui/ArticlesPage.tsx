@@ -1,19 +1,20 @@
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 import { memo, useCallback, type FC } from 'react'
 
+import { useSearchParams } from 'react-router-dom'
+
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { DynamicModuleLoader, type ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { Page } from '@/widgets/Page'
 
+import { ArticleInfiniteList } from './ArticleInfiniteList/ArticleInfiniteList'
 import cls from './ArticlesPage.module.scss'
-import { articlesPageReducer } from '../model/slices/articlesPageSlice'
+import { ArticlesPageFilters } from './ArticlesPageFilters/ArticlesPageFilters'
 import { fetchNextArticlesPage } from '../model/services/fetchArticlesPage/fetchNextArticlesPage'
 import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage'
-import { ArticlesPageFilters } from './ArticlesPageFilters/ArticlesPageFilters'
-import { useSearchParams } from 'react-router-dom'
-import { ArticleInfiniteList } from './ArticleInfiniteList/ArticleInfiniteList'
+import { articlesPageReducer } from '../model/slices/articlesPageSlice'
 
 interface ArticlesPageProps {
   className?: string

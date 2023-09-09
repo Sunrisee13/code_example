@@ -2,6 +2,7 @@ import { createEntityAdapter, createSlice, type PayloadAction } from '@reduxjs/t
 
 import { type StateSchema } from '@/app/providers/StoreProvider'
 import { type Article } from '@/entities/Article'
+
 import { fetchArticleRecommendations } from '../services/fetchRecommendations'
 import { type ArticleDetailsResommendationsSchema } from '../types/ArticleDetailsRecommendationsSchema'
 

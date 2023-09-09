@@ -23,7 +23,7 @@ module.exports = {
     sourceType: 'module',
     project: 'tsconfig.json'
   },
-  plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'sunrise-y-plugin'],
+  plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'sunrise-y-plugin', 'unused-imports'],
   rules: {
     'react/react-in-jsx-scope': 0,
     '@typescript-eslint/strict-boolean-expressions': 0,
@@ -46,6 +46,31 @@ module.exports = {
       {
         alias: '@',
         ignoreImportPatterns: ['**/StoreProvider', '**/testing']
+      }
+    ],
+    'unused-imports/no-unused-imports': 'error',
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal'],
+        pathGroups: [
+          {
+            pattern: 'react',
+            group: 'external',
+            position: 'before'
+          },
+          {
+            pattern: '@/**',
+            group: 'external',
+            position: 'after'
+          }
+        ],
+        pathGroupsExcludedImportTypes: ['react'],
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true
+        }
       }
     ]
   }

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Theme } from '@/shared/consts/theme'
 import { Country } from '@/entities/Country'
 import { Currency } from '@/entities/Currency'
+import AvatarImg from '@/shared/assets/tests/testAva.png'
 import StoreDecorator from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
 import ThemeDecorator from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import AvatarImg from '@/shared/assets/tests/testAva.png'
+import { Theme } from '@/shared/consts/theme'
 
 import ProfilePage from './ProfilePage'
 

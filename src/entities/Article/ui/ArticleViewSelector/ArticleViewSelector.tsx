@@ -1,13 +1,13 @@
 import { memo } from 'react'
 
-import { classNames } from '@/shared/lib/classNames/classNames'
 import ListIcon from '@/shared/assets/icons/list.svg'
 import TileIcon from '@/shared/assets/icons/tiles.svg'
+import { classNames } from '@/shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from '@/shared/ui/Button'
-
-import { ArticleView } from '../../model/types/article'
-import cls from './ArticleViewSelector.module.scss'
 import { Icon } from '@/shared/ui/Icon'
+
+import cls from './ArticleViewSelector.module.scss'
+import { ArticleView } from '../../model/types/article'
 
 interface ArticleViewSelectorProps {
   className?: string

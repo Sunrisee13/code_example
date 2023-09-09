@@ -1,14 +1,14 @@
 import { type AnyAction, type Reducer, type ReducersMapObject, type EnhancedStore, type CombinedState, type Dispatch } from '@reduxjs/toolkit'
 import { type AxiosInstance } from 'axios'
 
-import { type ArticlesPageSchema } from '@/pages/ArticlesPage'
-import { type ArticleDetailsPageSchema } from '@/pages/ArcticleDetailsPage'
-import { type ProfileSchema } from '@/feature/editableProfileCard'
-import { type LoginSchema } from '@/feature/AuthByUsername'
-import { type UISchema } from '@/feature/UI'
-import { type AddCommentFormSchema } from '@/feature/AddCommentForm'
-import { type UserSchema } from '@/entities/User'
 import { type ArticleDetailsSchema } from '@/entities/Article'
+import { type UserSchema } from '@/entities/User'
+import { type AddCommentFormSchema } from '@/feature/AddCommentForm'
+import { type LoginSchema } from '@/feature/AuthByUsername'
+import { type ProfileSchema } from '@/feature/editableProfileCard'
+import { type UISchema } from '@/feature/UI'
+import { type ArticleDetailsPageSchema } from '@/pages/ArcticleDetailsPage'
+import { type ArticlesPageSchema } from '@/pages/ArticlesPage'
 import { type rtkApi } from '@/shared/api/rtkApi'
 
 export interface StateSchema {
