@@ -6,12 +6,12 @@ import { useSelector } from 'react-redux'
 import { LoginModal } from '@/feature/AuthByUsername'
 import { AvatarDropdown } from '@/feature/avatarDropdown'
 import { NotificationButton } from '@/feature/notificationButton'
-import { Button, ButtonTheme } from '@/shared/ui/Button/Button'
+import { Button, ButtonTheme } from '@/shared/ui/Button'
 import {
   getUserAuthData
 } from '@/entities/User'
-import { Text, TextTheme } from '@/shared/ui/Text/Text'
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink'
+import { Text, TextTheme } from '@/shared/ui/Text'
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink'
 import { HStack } from '@/shared/ui/Stack'
 
 import cls from './Navbar.module.scss'
