@@ -38,6 +38,8 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
     'react/display-name': 0,
     'sunrise-y-plugin/path-checker': ['error', { alias: '@' }],
-    'sunrise-y-plugin/public-api-imports': ['error', { alias: '@' }]
+    'sunrise-y-plugin/public-api-imports': ['error', {
+      alias: '@', testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx']
+    }]
   }
 }
