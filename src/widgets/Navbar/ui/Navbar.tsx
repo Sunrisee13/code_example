@@ -15,7 +15,7 @@ import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink'
 import { HStack } from '@/shared/ui/Stack'
 
 import cls from './Navbar.module.scss'
-import { routePath } from '@/shared/config/RouteConfig/RouteConfig'
+import { routePath } from '@/shared/consts/router'
 
 interface NavbarProps {
   className?: string

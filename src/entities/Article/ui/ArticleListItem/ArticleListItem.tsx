@@ -12,7 +12,7 @@ import { Button, ButtonTheme } from '@/shared/ui/Button/Button'
 import { ArticleBlockType, type ArticleTextBlock, ArticleView, type Article } from '../../model/types/article'
 import cls from './ArticleListItem.module.scss'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
-import { routePath } from '@/shared/config/RouteConfig/RouteConfig'
+import { routePath } from '@/shared/consts/router'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
 
 interface ArticleListItemProps {

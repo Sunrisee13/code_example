@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { routePath } from '@/shared/config/RouteConfig/RouteConfig'
+import { routePath } from '@/shared/consts/router'
 
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { AppLink } from '@/shared/ui/AppLink/AppLink'
