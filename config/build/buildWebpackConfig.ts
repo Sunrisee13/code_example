@@ -33,9 +33,7 @@ export function buildWebpackConfig (
     },
 
     resolve: buildResolvers(options),
-    devtool: isDev ? 'inline-source-map' : undefined, // Вроде как нужны на этапе разработки, для отлова ошибок
-    // Благодаря им можно в браузере отлаживать код, тк браузер разложит всё по файлам для разработки
-    // https://www.youtube.com/watch?v=v9gtHkynU5E
+    devtool: isDev ? 'eval-cheap-module-source-map' : undefined,
     devServer: isDev ? buildDevServer(options) : undefined
   }
 }
