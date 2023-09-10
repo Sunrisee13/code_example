@@ -3,7 +3,7 @@ import { type HTMLAttributeAnchorTarget, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import EyeIcon from '@/shared/assets/icons/eye.svg'
-import { routePath } from '@/shared/consts/router'
+import { getRouteArticleDetails } from '@/shared/consts/router'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { AppLink } from '@/shared/ui/AppLink'
 import { Avatar } from '@/shared/ui/Avatar'
@@ -57,7 +57,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             <ArticleTextBlockComponent className={cls.textBlock} block={textBlock} />
           )}
           <div className={cls.footer}>
-            <AppLink to={routePath.article_details + article.id} target={target}>
+            <AppLink to={getRouteArticleDetails(article.id)} target={target}>
               <Button theme={ButtonTheme.OUTLINE} >
                 {t('Читать далее')}
               </Button>
@@ -70,7 +70,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
   }
 
   return (
-    <AppLink target={target} to={routePath.article_details + article.id} className={classNames('', {}, [className, cls[view]])}>
+    <AppLink target={target} to={getRouteArticleDetails(article.id)} className={classNames('', {}, [className, cls[view]])}>
       <Card >
         <div className={cls.imageWrapper}>
           <img src={article.img} className={cls.img} alt={article.title} />
