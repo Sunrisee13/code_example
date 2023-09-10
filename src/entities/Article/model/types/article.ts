@@ -1,7 +1,7 @@
 import { type User } from '@/entities/User'
 
 export enum ArticleSortField {
-  VIEVS = 'views',
+  VIEWS = 'views',
   TITLE = 'title',
   CREATED = 'createdAt',
 }
