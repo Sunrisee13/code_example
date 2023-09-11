@@ -1,0 +1,4 @@
+*.config.ts
+cypress/
+scripts/
+config/
