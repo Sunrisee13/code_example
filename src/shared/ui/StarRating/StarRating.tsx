@@ -23,7 +23,6 @@ export const StarRating = memo((props: StarRatingProps) => {
   const [isSelected, setIsSelected] = useState(Boolean(selectedStars))
 
   const onHover = (starsCount: number) => () => {
-    console.log('hover')
     if (!isSelected) {
       setCurrentStarsCount(starsCount)
     }
@@ -59,6 +58,8 @@ export const StarRating = memo((props: StarRatingProps) => {
                     onMouseLeave={onLeave}
                     onMouseEnter={onHover(starNumber)}
                     onClick={onClick(starNumber)}
+                    data-testid={`StarRating.${starNumber}`}
+                    data-selected={currentStarsCount >= starNumber}
                 />
             ))}
         </div>
