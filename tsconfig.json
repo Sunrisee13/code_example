@@ -1,49 +1,47 @@
 {
   "compilerOptions": {
-    "strict": true,
-    // Куда собираем (нам не важно, тк у нас сборка вебпаком)
     "outDir": "./dist/",
-    // noImplicitAny Подсвечивает места, где не указан тип (неявное any)
+    // Подсвечивает все места где не указан тип
+    // Однако это не означает, что теперь вовсе нельзя использовать any.
+    // Это означает лишь, что в подобных ситуация разработчик должен явно писать any,
     "noImplicitAny": true,
-    // Способы модульной сборки (импорты)
-    // самые частые ESNexs, es6, commonJS https://www.typescriptlang.org/tsconfig#module
     "module": "ESNext",
-    // "target": "es5" В какую спецификацию компилируем
+    // В какую спецификацию компилируем: для поддержки большинства браузеров
     "target": "es5",
-    // "jsx": "react",- позволяет обрабатывать react
     "jsx": "react-jsx",
+    // Компилятор будет обрабатывать не только TS файлы, но и JS файлы
     "allowJs": true,
-    // moduleResolution определяет импорты node/classic, почти всегда юзается node
+    "strict": true,
     "moduleResolution": "node",
+    // Для абсолютного импорта
     "baseUrl": ".",
-    // Автоматическая настройка для путей для абсолютных импортов
     "paths": {
       "@/*": ["./src/*"]
     },
-    //"esModuleInterop" позволяет там где require в пактеах
-    // поддерживать import export, = common js
+    // esModuleInterop позволяет работать с пакетами, которые используют
+    // common js как с обычными пакета с помощью import (require() module.export) = common js
+    // import Moment from 'moment';
+    // без флага esModuleInterop результат undefined
+    // console.log(Moment);
+    // c флагом результат [object Object]
+    // console.log(Moment);
     "esModuleInterop": true,
-    // esModuleInterop позволяет импортировать библиотеки без * as
-    // Если какая-то библиотека не имеет export default
+    // Если какая-либо библиотека не имеет default import,
+    // лоадеры вроде ts-loader или babel-loader автоматически создают их
+    // вместо такого импорта
+    // import * as React from 'react';
+    // можно писать такой
+    // import React from 'react';
     "allowSyntheticDefaultImports": true,
-    "plugins": [
-      // Плагин для автокомплита модульных стилей
-      {
-        "name": "typescript-plugin-css-modules"
-      }
-    ],
   },
-  // Данная настройка нужна, чтобы при "module": "ESNext",
-  // поддерживались вебпаком импорты и экспорты
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
-    },
-  "isolatedModules": true
-  // "include": [
-  //   "./config/jest/setupTest.ts" // Добавили это типо для того, чтобы подхватились методы в реакт тестах
-  // ], // После этой строчки всё лицо красное, надо будет фиксить
-//   Для всех, кто столкнулся с поломкой из-за include в tsconfig.json и решил не городить костыли:
-// "include" в tsconfig.json в данной ситуации не нужен вообще. Достаточно прописать setup file в jest config. По умолчанию, tsconfig.json указывает искать все *.ts, *.tsx файлы, поэтому setup file автоматически подхватится.
-// А сама проблема возникает из-за того, что screen.findByText() возвращает промис, а мы его expect'им как синхронный вызов. Достаточно добавить await перед вызовом и навесить async на коллбэк в тесте и всё заработает. 
-}}
+    }
+  },
+  "include": [
+    "./config/jest/setupTests.ts",
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ]
+}
