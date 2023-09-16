@@ -3,6 +3,7 @@ import { memo, useCallback, type FC } from 'react'
 
 import { useSearchParams } from 'react-router-dom'
 
+import { ArticlePageGreeting } from '@/feature/articlePageGreeting'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { DynamicModuleLoader, type ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
@@ -42,6 +43,7 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
         <Page data-testid='ArticlesPage' onScrollEnd={onLoadNextPart} className={classNames(cls.articlesPage, {}, [className])}>
           <ArticlesPageFilters />
           <ArticleInfiniteList />
+          <ArticlePageGreeting />
         </Page>
       </DynamicModuleLoader>
   )
