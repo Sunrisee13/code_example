@@ -1,8 +1,15 @@
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  margin-left: 10px;
+  opacity: 1;
+}
+
 .icon {
-  fill: var(--inverted-secondary-color);
-  margin-right: 10px;
-  margin-top: 10px;
-  flex-shrink: 0;
+  fill: var(--inverted-primary-color);
 }
 
 .collapsed {
@@ -10,6 +17,5 @@
     opacity: 0;
     transition: 0.2s opacity;
     width: 0;
-    white-space: nowrap;
   }
 }

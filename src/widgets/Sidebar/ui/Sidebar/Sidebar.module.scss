@@ -1,7 +1,7 @@
 .Sidebar {
-  min-height: calc(100vh - var(--navbar-height));
+  height: calc(100vh - var(--navbar-height));
   width: var(--sidebar-width);
-  background-color: var(--inverted-bg-color);
+  background: var(--inverted-bg-color);
   position: relative;
   transition: width 0.3s;
 }
@@ -18,7 +18,7 @@
   margin-left: 20px;
 }
 
-.collapsedBtn {
+.collapseBtn {
   position: absolute;
   right: -32px;
   bottom: 32px;
@@ -26,10 +26,8 @@
 }
 
 .items {
-  margin-left: 20px;
   margin-top: 20px;
-  display: flex;
-  flex-direction: column;
+  margin-left: 30px;
 }
 
 .collapsed {
@@ -43,4 +41,15 @@
   .lang {
     margin-left: 0;
   }
+}
+
+.SidebarRedesigned {
+  background: var(--light-bg-redesigned);
+  width: 220px;
+  height: 100%;
+  border-radius: 32px;
+}
+
+.appLogo {
+  padding-top: 20px;
 }

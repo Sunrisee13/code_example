@@ -1,4 +1,4 @@
-import { memo, type MutableRefObject, useRef, type ReactNode, type UIEvent } from 'react'
+import { memo, type MutableRefObject, type ReactNode, type UIEvent, useRef } from 'react'
 
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom'
 import { type StateSchema } from '@/app/providers/StoreProvider'
 import { getUIScrollByPath, uiActions } from '@/feature/UI'
 import { classNames } from '@/shared/lib/classNames/classNames'
+import { toggleFeatures } from '@/shared/lib/features'
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll'
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect'
@@ -20,21 +21,17 @@ interface PageProps extends TestProps {
   onScrollEnd?: () => void
 }
 
+export const PAGE_ID = 'PAGE_ID'
+
 export const Page = memo((props: PageProps) => {
   const { className, children, onScrollEnd } = props
   const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>
   const triggerRef = useRef() as MutableRefObject<HTMLDivElement>
   const dispatch = useAppDispatch()
   const { pathname } = useLocation()
-  // useSelector не умеет работать с селекторами с двумя аргументами
-  const scrollPosition = useSelector((state: StateSchema) => getUIScrollByPath(state, pathname))
-
-  const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
-    dispatch(uiActions.setScrollPosition({
-      position: e.currentTarget.scrollTop,
-      path: pathname
-    }))
-  }, 500)
+  const scrollPosition = useSelector((state: StateSchema) =>
+    getUIScrollByPath(state, pathname)
+  )
 
   useInfiniteScroll({
     triggerRef,
@@ -46,10 +43,37 @@ export const Page = memo((props: PageProps) => {
     wrapperRef.current.scrollTop = scrollPosition
   })
 
+  const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
+    dispatch(
+      uiActions.setScrollPosition({
+        position: e.currentTarget.scrollTop,
+        path: pathname
+      })
+    )
+  }, 500)
+
   return (
-    <main data-testid={props['data-testid'] ?? 'Page'} ref={wrapperRef} onScroll={onScroll} className={classNames(cls.Page, {}, [className])}>
+    <main
+      ref={wrapperRef}
+      className={classNames(
+        toggleFeatures({
+          name: 'isAppRedesigned',
+          on: () => cls.PageRedesigned,
+          off: () => cls.Page
+        }),
+        {},
+        [className]
+      )}
+      onScroll={onScroll}
+      id={PAGE_ID}
+      data-testid={props['data-testid'] ?? 'Page'}
+    >
       {children}
-      {onScrollEnd ? <div ref={triggerRef} className={cls.trigger}/> : null}
+      {onScrollEnd
+        ? (
+          <div className={cls.trigger} ref={triggerRef} />
+          )
+        : null}
     </main>
   )
 })
