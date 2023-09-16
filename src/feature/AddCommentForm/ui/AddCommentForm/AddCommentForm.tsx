@@ -8,7 +8,7 @@ import { DynamicModuleLoader, type ReducersList } from '@/shared/lib/components/
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
 import { Input } from '@/shared/ui/deprecated/Input'
-import { HStack } from '@/shared/ui/deprecated/Stack'
+import { HStack } from '@/shared/ui/redesigned/Stack'
 
 import cls from './AddCommentForm.module.scss'
 import {

@@ -1,20 +1,19 @@
-import { memo, useCallback, useState } from 'react'
+import React, { memo, useCallback, useState } from 'react'
 
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 
-import {
-  getUserAuthData
-} from '@/entities/User'
+import { getUserAuthData } from '@/entities/User'
 import { LoginModal } from '@/feature/AuthByUsername'
 import { AvatarDropdown } from '@/feature/avatarDropdown'
 import { NotificationButton } from '@/feature/notificationButton'
 import { getRouteArticleCreate } from '@/shared/consts/router'
 import { classNames } from '@/shared/lib/classNames/classNames'
+import { ToggleFeatures } from '@/shared/lib/features'
 import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink'
 import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button'
-import { HStack } from '@/shared/ui/deprecated/Stack'
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text'
+import { HStack } from '@/shared/ui/redesigned/Stack'
 
 import cls from './Navbar.module.scss'
 
@@ -37,42 +36,56 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
   if (authData) {
     return (
-      <header className={classNames(cls.Navbar, {}, [className])}>
-        <Text
-          className={cls.appName}
-          title={t('Ulbi TV App')}
-          theme={TextTheme.INVERTED}
-        />
-        <AppLink
-          to={getRouteArticleCreate()}
-          theme={AppLinkTheme.SECONDARY}
-          className={cls.createBtn}
-        >
-          {t('Создать статью')}
-        </AppLink>
-        <HStack gap="16" className={cls.actions}>
-          <NotificationButton />
-          <AvatarDropdown />
-        </HStack>
-      </header>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <header
+                        className={classNames(cls.NavbarRedesigned, {}, [
+                          className
+                        ])}
+                    >
+                        <HStack gap="16" className={cls.actions}>
+                            <NotificationButton />
+                            <AvatarDropdown />
+                        </HStack>
+                    </header>
+                }
+                off={
+                    <header className={classNames(cls.Navbar, {}, [className])}>
+                        <Text
+                            className={cls.appName}
+                            title={t('Ulbi TV App')}
+                            theme={TextTheme.INVERTED}
+                        />
+                        <AppLink
+                            to={getRouteArticleCreate()}
+                            theme={AppLinkTheme.SECONDARY}
+                            className={cls.createBtn}
+                        >
+                            {t('Создать статью')}
+                        </AppLink>
+                        <HStack gap="16" className={cls.actions}>
+                            <NotificationButton />
+                            <AvatarDropdown />
+                        </HStack>
+                    </header>
+                }
+            />
     )
   }
 
   return (
-    <header className={classNames(cls.Navbar, {}, [className])}>
-      <Button
-        theme={ButtonTheme.CLEAR_INVERTED}
-        className={cls.links}
-        onClick={onShowModal}
-      >
-        {t('Войти')}
-      </Button>
-      {isAuthModal && (
-        <LoginModal
-          isOpen={isAuthModal}
-          onClose={onCloseModal}
-        />
-      )}
-    </header>
+        <header className={classNames(cls.Navbar, {}, [className])}>
+            <Button
+                theme={ButtonTheme.CLEAR_INVERTED}
+                className={cls.links}
+                onClick={onShowModal}
+            >
+                {t('Войти')}
+            </Button>
+            {isAuthModal && (
+                <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+            )}
+        </header>
   )
 })

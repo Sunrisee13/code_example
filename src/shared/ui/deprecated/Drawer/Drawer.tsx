@@ -7,8 +7,8 @@ import { classNames } from '@/shared/lib/classNames/classNames'
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme'
 
 import cls from './Drawer.module.scss'
-import { Overlay } from '../Overlay/Overlay'
-import { Portal } from '../Portal/Portal'
+import { Overlay } from '../../redesigned/Overlay'
+import { Portal } from '../../redesigned/Portal/Portal'
 
 interface DrawerProps {
   className?: string
