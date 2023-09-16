@@ -35,7 +35,11 @@ export const Page = memo((props: PageProps) => {
 
   useInfiniteScroll({
     triggerRef,
-    wrapperRef,
+    wrapperRef: toggleFeatures({
+      name: 'isAppRedesigned',
+      on: () => undefined,
+      off: () => wrapperRef
+    }),
     callback: onScrollEnd
   })
 
@@ -53,27 +57,27 @@ export const Page = memo((props: PageProps) => {
   }, 500)
 
   return (
-    <main
-      ref={wrapperRef}
-      className={classNames(
-        toggleFeatures({
-          name: 'isAppRedesigned',
-          on: () => cls.PageRedesigned,
-          off: () => cls.Page
-        }),
-        {},
-        [className]
-      )}
-      onScroll={onScroll}
-      id={PAGE_ID}
-      data-testid={props['data-testid'] ?? 'Page'}
-    >
-      {children}
-      {onScrollEnd
-        ? (
-          <div className={cls.trigger} ref={triggerRef} />
-          )
-        : null}
-    </main>
+        <main
+            ref={wrapperRef}
+            className={classNames(
+              toggleFeatures({
+                name: 'isAppRedesigned',
+                on: () => cls.PageRedesigned,
+                off: () => cls.Page
+              }),
+              {},
+              [className]
+            )}
+            onScroll={onScroll}
+            id={PAGE_ID}
+            data-testid={props['data-testid'] ?? 'Page'}
+        >
+            {children}
+            {onScrollEnd
+              ? (
+                <div className={cls.trigger} ref={triggerRef} />
+                )
+              : null}
+        </main>
   )
 })
