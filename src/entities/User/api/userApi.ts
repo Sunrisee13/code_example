@@ -18,10 +18,17 @@ const userApi = rtkApi.injectEndpoints({
           jsonSettings
         }
       })
+    }),
+    getUserDataById: build.query<User, string>({
+      query: (userId) => ({
+        url: `/users/${userId}`,
+        method: 'GET'
+      })
     })
   })
 })
 
-// TODO Вот про эту штуку бы почитать
 export const setJsonSettingsMutation =
     userApi.endpoints.setJsonSettings.initiate
+
+export const getUserDataByIdQuery = userApi.endpoints.getUserDataById.initiate

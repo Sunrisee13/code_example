@@ -9,4 +9,5 @@ export { userReducer, userActions } from './model/slice/userSlice'
 export type { User, UserSchema } from './model/types/user'
 
 export { useJsonSettings } from './model/selectors/jsonSettings'
+export { initAuthData } from './model/services/initAuthData'
 export { saveJsonSettings } from './model/services/saveJsonSettings'
