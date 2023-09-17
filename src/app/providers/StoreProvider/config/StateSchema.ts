@@ -3,13 +3,13 @@ import { type AxiosInstance } from 'axios'
 
 import { type ArticleDetailsSchema } from '@/entities/Article'
 import { type UserSchema } from '@/entities/User'
-import { type LoginSchema } from '@/feature/AuthByUsername'
 import { type ProfileSchema } from '@/feature/editableProfileCard'
 import { type UISchema } from '@/feature/UI'
 import { type ArticlesPageSchema } from '@/pages/ArticlesPage'
 import { type rtkApi } from '@/shared/api/rtkApi'
 import { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage'
 import { AddCommentFormSchema } from '@/feature/addCommentForm'
+import { LoginSchema } from '@/widgets/AuthByUsername'
 
 export interface StateSchema {
   user: UserSchema

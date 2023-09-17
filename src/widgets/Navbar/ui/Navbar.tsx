@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 
 import { getUserAuthData } from '@/entities/User'
-import { LoginModal } from '@/feature/AuthByUsername'
 import { AvatarDropdown } from '@/feature/avatarDropdown'
 import { NotificationButton } from '@/feature/notificationButton'
 import { getRouteArticleCreate } from '@/shared/consts/router'
@@ -18,6 +17,8 @@ import {
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text'
 import { Button } from '@/shared/ui/redesigned/Button'
 import { HStack } from '@/shared/ui/redesigned/Stack'
+// eslint-disable-next-line sunrise-y-plugin/layer-imports
+import { LoginModal } from '@/widgets/AuthByUsername'
 
 import cls from './Navbar.module.scss'
 
