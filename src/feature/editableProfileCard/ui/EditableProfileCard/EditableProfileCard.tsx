@@ -110,8 +110,8 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
                     isLoading={isLoading}
                     error={error}
                     readonly={readonly}
-                    onChangeFirstName={onChangeFirstname}
-                    onChangeLastName={onChangeLastname}
+                    onChangeFirstname={onChangeFirstname}
+                    onChangeLastname={onChangeLastname}
                     onChangeAge={onChangeAge}
                     onChangeCity={onChangeCity}
                     onChangeUsername={onChangeUsername}
