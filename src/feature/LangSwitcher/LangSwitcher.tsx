@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-/* eslint-disable i18next/no-literal-string */
 import React, { memo } from 'react'
 
 import { useTranslation } from 'react-i18next'
@@ -25,22 +24,22 @@ export const LangSwitcher = memo(({ className, short }: LangSwitcherProps) => {
   }
 
   return (
-    <ToggleFeatures
-      feature="isAppRedesigned"
-      on={
-        <Button variant="clear">
-          {t(short ? 'Короткий язык' : 'Язык')}
-        </Button>
-      }
-      off={
-        <ButtonDeprecated
-          className={classNames('', {}, [className])}
-          theme={ButtonTheme.CLEAR}
-          onClick={toggle}
-        >
-          {t(short ? 'Короткий язык' : 'Язык')}
-        </ButtonDeprecated>
-      }
-    />
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={
+                <Button onClick={toggle} variant="clear">
+                    {t(short ? 'Короткий язык' : 'Язык')}
+                </Button>
+            }
+            off={
+                <ButtonDeprecated
+                    className={classNames('', {}, [className])}
+                    theme={ButtonTheme.CLEAR}
+                    onClick={toggle}
+                >
+                    {t(short ? 'Короткий язык' : 'Язык')}
+                </ButtonDeprecated>
+            }
+        />
   )
 })

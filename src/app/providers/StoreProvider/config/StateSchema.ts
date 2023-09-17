@@ -7,9 +7,9 @@ import { type AddCommentFormSchema } from '@/feature/AddCommentForm'
 import { type LoginSchema } from '@/feature/AuthByUsername'
 import { type ProfileSchema } from '@/feature/editableProfileCard'
 import { type UISchema } from '@/feature/UI'
-import { type ArticleDetailsPageSchema } from '@/pages/ArcticleDetailsPage'
 import { type ArticlesPageSchema } from '@/pages/ArticlesPage'
 import { type rtkApi } from '@/shared/api/rtkApi'
+import { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage'
 
 export interface StateSchema {
   user: UserSchema
