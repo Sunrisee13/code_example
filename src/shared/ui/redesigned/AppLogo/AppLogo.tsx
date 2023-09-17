@@ -1,3 +1,4 @@
+/* eslint-disable i18next/no-literal-string */
 import React, { memo } from 'react'
 
 import AppSvg from '@/shared/assets/icons/app-image.svg'
@@ -18,15 +19,14 @@ export const AppLogo = memo(({ className, size = 50 }: AppLogoProps) => {
             justify="center"
             className={classNames(cls.appLogoWrapper, {}, [className])}
         >
-            <div className={cls.gradientBig} />
-            <div className={cls.gradientSmall} />
             <AppSvg
                 width={size}
                 height={size}
-                // eslint-disable-next-line i18next/no-literal-string
                 color="black"
                 className={cls.appLogo}
             />
+            <div className={cls.gradientBig} />
+            <div className={cls.gradientSmall} />
         </HStack>
   )
 })
