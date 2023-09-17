@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { ScrollToTopButton } from '@/features/scrollToTopButton'
+import { ScrollToTopButton } from '@/feature/scrollToTopButton'
 import { classNames } from '@/shared/lib/classNames/classNames'
 import { VStack } from '@/shared/ui/redesigned/Stack'
 
