@@ -13,12 +13,14 @@ import { Navbar } from '@/widgets/Navbar'
 import { PageLoader } from '@/widgets/PageLoader'
 import { Sidebar } from '@/widgets/Sidebar'
 
+import { useAppToolbar } from './lib/useAppToolbar'
 import { AppRouter } from './providers/router'
 
 function App () {
   const { theme } = useTheme()
   const dispatch = useAppDispatch()
   const inited = useSelector(getUserInited)
+  const toolbar = useAppToolbar()
 
   useEffect(() => {
     if (!inited) {
@@ -67,6 +69,7 @@ function App () {
               header={<Navbar />}
               content={<AppRouter />}
               sidebar={<Sidebar />}
+              toolbar={toolbar}
             />
           </Suspense>
         </div>
