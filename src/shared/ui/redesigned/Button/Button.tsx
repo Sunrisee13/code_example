@@ -61,19 +61,19 @@ export const Button = memo((props: ButtonProps) => {
   }
 
   return (
-    <button
-      type="button"
-      className={classNames(cls.Button, mods, [
-        className,
-        cls[variant],
-        cls[size]
-      ])}
-      disabled={disabled}
-      {...otherProps}
-    >
-      <div className={cls.addonLeft}>{addonLeft}</div>
-      {children}
-      <div className={cls.addonRight}>{addonRight}</div>
-    </button>
+        <button
+            type="button"
+            className={classNames(cls.Button, mods, [
+              className,
+              cls[variant],
+              cls[size]
+            ])}
+            disabled={disabled}
+            {...otherProps}
+        >
+            <div className={cls.addonLeft}>{addonLeft}</div>
+            {children}
+            <div className={cls.addonRight}>{addonRight}</div>
+        </button>
   )
 })

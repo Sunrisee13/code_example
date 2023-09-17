@@ -4,27 +4,34 @@ import { type ThunkConfig } from '@/app/providers/StoreProvider'
 
 import { type Article } from '../../types/article'
 
-// <ТоЧтоВозвращаем, Аргумент, config>
-export const fetchArticleById = createAsyncThunk<Article, string, ThunkConfig<string>>(
-  'article/fetchArticleById',
-  async (articleId, thunkAPI) => {
-    const { extra, rejectWithValue } = thunkAPI
-    try {
-      const response = await extra.api.get<Article>(`/articles/${articleId}`, {
-        params: {
-          _expand: 'user'
-        }
-      })
+export const fetchArticleById = createAsyncThunk<
+Article,
+string | undefined,
+ThunkConfig<string>
+>('articleDetails/fetchArticleById', async (articleId, thunkApi) => {
+  const { extra, rejectWithValue } = thunkApi
 
-      if (!response.data) throw new Error()
-
-      return response.data
-    } catch (e) {
-      console.log(e)
-      return rejectWithValue('error')
-      // Если моими словами, как я понял эту конструкцию
-      // Мы создаём экстра редьюсеры, которые зависят от состояния thunk
-      // и с помощью thunk Api мы можем передавать payload (который мы протипизировали)
-    }
+  if (!articleId) {
+    throw new Error('')
   }
-)
+
+  try {
+    const response = await extra.api.get<Article>(
+            `/articles/${articleId}`,
+            {
+              params: {
+                _expand: 'user'
+              }
+            }
+    )
+
+    if (!response.data) {
+      throw new Error()
+    }
+
+    return response.data
+  } catch (e) {
+    console.log(e)
+    return rejectWithValue('error')
+  }
+})

@@ -6,7 +6,5 @@
   ], // Преобразование кода в зависимости от окружения
   //   https://www.i18next.com/overview/plugins-and-utils
   // Плагин для i18next https://github.com/gilbsgilbs/babel-plugin-i18next-extract
-  "plugins": [
-    "i18next-extract"
-  ]
+  "plugins": []
 }
